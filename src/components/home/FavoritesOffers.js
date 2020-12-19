@@ -1,169 +1,79 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../App.css';
-import Img1 from '../../assets/images/img1-galery.jpg';
-import { CgMathPlus } from "react-icons/cg";
+import GoToMenuImg from '../../assets/images/LogoAlaOrd.png';
 
 const FavoritesOffers = () => {
     return (
         <>
-            {/* <SubTitleFavorite>Platillos favoritos</SubTitleFavorite> */}
-            <SubTitleFavorite class="galery-consumed">______ Platillos más consumidos ______</SubTitleFavorite>
-            <Galery>
+            <GoToMenu>
+                <img src={GoToMenuImg} alt="Ir al menú" />
                 <div>
-                    <GaleryImage src={Img1} alt="platillo 1" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
+                    <p>Estamos A La Orden, ve al menú y ordena ahora </p>
+                    <BtnGoToMenu>Ir al menú</BtnGoToMenu>
                 </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 2" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 3" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 4" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 5" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 6" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <More>
-                    <CgMathPlus />
-                    <p>Ver más</p>
-                </More>
-            </Galery>
-
-            <SubTitleFavorite class="galery-consumed">______ Platillos en oferta ______</SubTitleFavorite>
-            <Galery>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 1" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 2" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 3" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 4" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 5" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <div>
-                    <GaleryImage src={Img1} alt="platillo 6" />
-                    <div>
-                        <p>Title</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-                <More>
-                    <div>
-                        <CgMathPlus />
-                    </div>
-                    <p>Ver más</p>
-                </More>
-            </Galery>
+            </GoToMenu>
         </>
     );
 };
 
-const SubTitleFavorite = styled.h1`
-    text-align: center;
-    font-size: 18pt;
-    margin: 40px 0;
-`;
-
-const Galery = styled.div`
+const GoToMenu = styled.div`
+    background: #E51B23;
+    width: 100%;
+    height: 150px;
+    margin: 150px  0;
     display: flex;
-    overflow: auto;
-    margin: 0 25px 40px 25px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 
     div{
-        flex: 0 0 auto; 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     img{
-        width: 150px;
-        height: 150px;
-        margin: 0px 35px 0px 0px;
-        border-radius: 50%;
+        background: #fff;
+        box-Shadow: 0 3px 6px rgba(57,73,76,0.4);
+        /* margin: 0 0 0 25px; */
+        position: absolute;
+        display: flex;
+        left:  25px;
     }
 
     p{
-        width: 150px;
         text-align: center;
+        color: #fff;
+        font-size: 12pt;
+        /* margin: 0 20px; */
+        /* width: 200px; */
+    }
+
+    @media(max-width: 1080px){
+        /* display: flex; */
+        flex-flow: column-reverse;
+        height: 430px;
+
+        img{
+            position:static;
+            margin-top: 20px;
+        }
     }
 `;
 
-const GaleryImage = styled.img`
-    text-align: center;
-`;
-
-const More = styled.div`
-    border: 1px solid none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;    
-    margin: 0px 35px 0px 0px;
-    width: auto;
-    height: 150px;
-    width: 150px;
-    border-radius: 50%;
-
-    &:hover{
-        background: #E51B23;
-        cursor: pointer;
-        color: #f3f3f3;
-        font-weight: 500;
-    }
+const BtnGoToMenu = styled.button`
+    padding: 10px;
+    background: #fff;
+    color: #E51B23;
+    font-size: 12pt;
+    font-weight: 500;
+    width: 250px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
 `;
 
 export default FavoritesOffers;

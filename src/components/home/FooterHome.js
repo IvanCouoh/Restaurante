@@ -5,7 +5,7 @@ const FooterHome = () => {
     return (
         <Footer>
             <p>
-                <span>A La Orden.</span>
+                <span>A La Orden. </span>
                 Todos los derechos reservados.
             </p>
         </Footer>
