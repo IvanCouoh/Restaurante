@@ -1,42 +1,48 @@
 import React, { useState } from 'react';
 import '../../App.css';
 import styled from 'styled-components';
-import logo1 from '../../assets/images/LogoAlaOrd.png';
 import logo2 from '../../assets/images/segundoLogo.png';
 import { BsChevronCompactDown } from 'react-icons/bs';
 import Fade from 'react-reveal/Fade';
-import Flip from 'react-reveal/Flip';
-import Img1 from '../../assets/images/img1-galery.jpg';
 import { CgMathPlus } from "react-icons/cg";
 import { arrayMenu } from './arrayMenu';
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const HeaderImage = () => {
-    const [menu, setMenu] = useState(false);
+    const [menuBackground, setMenuBackground] = useState(false);
+    const [click, setClick] = useState(false);
 
     const changeBackground = () => {
         if (window.scrollY >= 150) {
-            setMenu(true);
+            setMenuBackground(true);
         } else {
-            setMenu(false);
+            setMenuBackground(false);
         }
     }
 
     window.addEventListener('scroll', changeBackground);
 
+    const changeIconMenu = () => {
+        setClick(!click);
+    }
+
     return (
         <>
             <div class="image-fix">
-                <WH>
-                    <header className={menu ? "headerStyle background" : "headerStyle"}>
+                <WrapperHeader>
+                    <header className={menuBackground ? "headerStyle background" : "headerStyle"}>
                         <a href="/" ><img src={logo2} alt="A La Orden" /></a>
-                        <Options>
+                        <MenuOptions>
+                            <Hamburguesa onClick={changeIconMenu}> {click ? <AiOutlineClose style={{ color: "#E51B23" }} /> : <AiOutlineMenu style={{ color: "#E51B23" }} />} </Hamburguesa>
+                        </MenuOptions>
+                        <div className={click ? "ShowMenuOptions Active" : "menuOptions"}>
                             <a href="#inicio">Inicio</a>
                             <a href="#favoritos">Favoritos</a>
                             <a href="#promociones">Promociones</a>
                             <a href="#">Menú</a>
-                        </Options>
+                        </div>
                     </header>
-                </WH>
+                </WrapperHeader>
                 <ScrollDown id="inicio">
                     <h1>Bienvenido</h1>
                     <p>Todo nuestro menú está a su disposición como desayunos, almuerzos, cenas, postres, bebidas y más, sin hacer largas filas para pedidos ni para recogerlos, nosotros le hacemos llegar su orden hasta su mesa.</p>
@@ -47,7 +53,6 @@ const HeaderImage = () => {
             </div>
             <Wrapper>
                 <Espacio id="favoritos" />
-                {/* <SubTitleFavorite>Platillos favoritos</SubTitleFavorite> */}
                 <SubTitleFavorite class="galery-consumed"> Platillos más consumidos </SubTitleFavorite>
                 <Galery>
                     {arrayMenu.map(item => (
@@ -59,12 +64,12 @@ const HeaderImage = () => {
                             </div>
                         </div>
                     ))}
-                    {/* <More>
+                    <More>
                         <div>
                             <CgMathPlus />
                         </div>
                         <p>Ver más</p>
-                    </More> */}
+                    </More>
                 </Galery>
                 <Espacio id="promociones" />
                 <SubTitleFavorite class="galery-consumed"> Platillos en oferta </SubTitleFavorite>
@@ -94,9 +99,9 @@ const Wrapper = styled.div`
     margin: 0 15px;
 `;
 
-const WH = styled.header`
+const WrapperHeader = styled.header`
     .headerStyle{
-        z-index: 1000;
+        z-index: 100;
         display: flex;
         position: fixed;
         width: 100%;
@@ -113,8 +118,6 @@ const WH = styled.header`
     .background{
         background: #fff;
         box-Shadow: 0 3px 6px rgba(57,73,76,0.4);
-        /* transition: all 0.5s ease-out;
-        transition: all 0.5s ease-in-out; */
         transition: 0.5s ease-in-out;
         -webkit-transition: 0.5s ease-in-out;
 
@@ -126,13 +129,44 @@ const WH = styled.header`
             text-decoration: underline;
         }
     }
-`;
 
-const Options = styled.div`
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
+    .menuOptions{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+    }
+
+    @media (max-width: 810px){
+        img{
+            width: 195px;
+        }
+
+        .menuOptions{
+            display: none;
+        }
+    }
+
+    .ShowMenuOptions{
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        position: absolute;
+        height: 100vh;
+        background-color: #fff;
+
+            a{
+                margin: 15px 0;
+                color: #E51B23;
+            }
+            
+        }
+
+    .Active{
+        display: flex;
+    }
 
     a{
         font-size: 13pt;
@@ -142,12 +176,58 @@ const Options = styled.div`
         align-items: center;
         color: #fff;
         text-decoration: none;
-        height: 50px;
         cursor: pointer;
+
+        &:hover{
+            color: #E51B23;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+    }
+    
+`;
+
+const MenuOptions = styled.div`
+    display: none;
+
+    @media (max-width: 810px){
+        &{
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            background-color: none;
+            position: absolute;
+            align-items: center;
+            height: 94px;
+        }
+    }
+`;
+
+const Hamburguesa = styled.span`
+    margin: 0 15px;
+    font-size: 35px;
+    z-index: 300;
+    @media (max-width: 810px){color: #fff;}
+`;
+const IconMenuOptions = styled.div`
+    span{
+       color: #E51B23;
+        font-size: 35px;
+        z-index: 300;
+        width: 100%;
+        position: absolute;
+        background-color: rosybrown;
     }
 
-    a:hover{
-        color: #E51B23;
+    @media (max-width: 810px){
+        span{
+            color: #E51B23;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 94px;
+            margin: 0 15px;
+        }
     }
 `;
 
@@ -159,7 +239,6 @@ const ScrollDown = styled.div`
     justify-content: center;
     align-items: center;
     top: -10px;
-
 
     h1{
         font-family: 'Pinyon Script', cursive;
@@ -186,7 +265,6 @@ const ScrollDown = styled.div`
         }
         p{
             padding: 0;
-            /* margin: 0 15px; */
         }
     }
 `;
@@ -201,7 +279,6 @@ const Galery = styled.div`
     display: flex;
     overflow: auto;
     margin: 0 25px 40px 25px;
-    /* justify-content: center; */
     position: relative;
 
     img{
@@ -215,8 +292,6 @@ const Galery = styled.div`
         width: 150px;
         text-align: center;
     }
-
-
 `;
 
 const GaleryImage = styled.img`
