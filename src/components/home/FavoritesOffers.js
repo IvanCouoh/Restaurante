@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import '../../App.css';
 import GoToMenuImg from '../../assets/images/LogoAlaOrd.png';
+import { Link } from "react-router-dom";
 
 const FavoritesOffers = () => {
     return (
@@ -10,7 +11,7 @@ const FavoritesOffers = () => {
                 <img src={GoToMenuImg} alt="Ir al menú" />
                 <div>
                     <p>Estamos A La Orden, ve al menú y ordena ahora </p>
-                    <BtnGoToMenu>Ir al menú</BtnGoToMenu>
+                    <Link to="/menu"><BtnGoToMenu>Ir al menú</BtnGoToMenu></Link>
                 </div>
             </GoToMenu>
         </>
@@ -73,6 +74,7 @@ const BtnGoToMenu = styled.button`
     border: none;
     border-radius: 10px;
     outline: none;
+    text-decoration: none;
     cursor: pointer;
 `;
 

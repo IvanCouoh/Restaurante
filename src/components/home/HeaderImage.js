@@ -7,6 +7,8 @@ import Fade from 'react-reveal/Fade';
 import { CgMathPlus } from "react-icons/cg";
 import { arrayMenu } from './arrayMenu';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { Link } from "react-router-dom";
+
 
 const HeaderImage = () => {
     const [menuBackground, setMenuBackground] = useState(false);
@@ -28,7 +30,7 @@ const HeaderImage = () => {
 
     return (
         <>
-            <div class="image-fix">
+            <div className="image-fix">
                 <WrapperHeader>
                     <header className={menuBackground ? "headerStyle background" : "headerStyle"}>
                         <a href="/" ><img src={logo2} alt="A La Orden" /></a>
@@ -39,7 +41,7 @@ const HeaderImage = () => {
                             <a href="#inicio">Inicio</a>
                             <a href="#favoritos">Favoritos</a>
                             <a href="#promociones">Promociones</a>
-                            <a href="#">Menú</a>
+                            <Link to="/menu">Menú</Link>
                         </div>
                     </header>
                 </WrapperHeader>
@@ -53,10 +55,10 @@ const HeaderImage = () => {
             </div>
             <Wrapper>
                 <Espacio id="favoritos" />
-                <SubTitleFavorite class="galery-consumed"> Platillos más consumidos </SubTitleFavorite>
+                <SubTitleFavorite className="galery-consumed"> Platillos más consumidos </SubTitleFavorite>
                 <Galery>
-                    {arrayMenu.map(item => (
-                        <div key={item.id}>
+                    {arrayMenu.map((item, index) => (
+                        <div key={index}>
                             <GaleryImage src={item.platillo} alt="imagen" />
                             <div>
                                 <p>{item.title}</p>
@@ -72,10 +74,10 @@ const HeaderImage = () => {
                     </More>
                 </Galery>
                 <Espacio id="promociones" />
-                <SubTitleFavorite class="galery-consumed"> Platillos en oferta </SubTitleFavorite>
+                <SubTitleFavorite className="galery-consumed"> Platillos en oferta </SubTitleFavorite>
                 <Galery>
-                    {arrayMenu.map(item => (
-                        <div>
+                    {arrayMenu.map((item, index) => (
+                        <div key={index}>
                             <GaleryImage src={item.platillo} alt="imagen" />
                             <div>
                                 <p>{item.title}</p>
@@ -137,7 +139,7 @@ const WrapperHeader = styled.header`
         width: 100%;
     }
 
-    @media (max-width: 810px){
+    @media (max-width: 849px){
         img{
             width: 195px;
         }
@@ -178,19 +180,23 @@ const WrapperHeader = styled.header`
         text-decoration: none;
         cursor: pointer;
 
+
         &:hover{
             color: #E51B23;
             text-decoration: underline;
             font-weight: 500;
         }
     }
+        a:nth-child(4){
+            margin-right: 25px;
+        }
     
 `;
 
 const MenuOptions = styled.div`
     display: none;
 
-    @media (max-width: 810px){
+    @media (max-width: 849px){
         &{
             display: flex;
             justify-content: flex-end;

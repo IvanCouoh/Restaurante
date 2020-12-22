@@ -22,6 +22,7 @@ const Footer = styled.footer`
 
     p{
         text-align: center;
+        color: #fff;
     }
 
     span{
