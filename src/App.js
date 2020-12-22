@@ -1,45 +1,28 @@
-// import logo from './logo.svg';
-// import Home from './Containers/home/HomePage';
-// import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-
-// function App() {
-//   return (
-//     <Router>
-//       <Switch>
-//         <Route></Route>
-//       </Switch>
-//     </Router>
-//   );
-// }
-
-// export default App;
-
-
-import React from "react";
-import Home from './Containers/home/HomePage';
-import Menu from "./pages/Menu";
-import Carrito from './pages/Carrito';
-import Uno from './pages/Uno';
-
+import React, { useEffect } from "react";
+import Home from './pages/Home';
+import Menu from "./pages/ClientUser/Menu";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  Redirect
 } from "react-router-dom";
+import { useLocation } from 'react-router-dom';
 
-export default function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Switch>
-        {/* <Redirect from="/" to="/"></Redirect> */}
-        <Route path="/uno">
-          <Uno />
-        </Route>
-        <Route path="/carrito">
-          <Carrito />
-        </Route>
         <Route path="/menu">
           <Menu />
         </Route>
@@ -50,3 +33,5 @@ export default function App() {
     </Router>
   );
 }
+
+export default App;

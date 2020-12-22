@@ -1,16 +1,16 @@
 import React from 'react';
-import HeaderImage from '../../components/home/HeaderImage';
-import FavoritesOffers from '../../components/home/FavoritesOffers';
-import Footter from '../../components/home/FooterHome';
+import ContentHome from '../../components/ContentHome/Index';
+import GoToMenu from '../../components/ContentHome/GoToMenuComponent';
+import Footter from '../../components/ContentHome/FooterHome';
 
-const Home = () => {
+const HomePage = () => {
     return (
         <>
-            <HeaderImage />
-            <FavoritesOffers />
+            <ContentHome />
+            <GoToMenu />
             <Footter />
         </>
     );
 };
 
-export default Home;
+export default HomePage;
