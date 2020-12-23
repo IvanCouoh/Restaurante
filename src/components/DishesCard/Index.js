@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { arrayDishes } from './ArrayDishes';
+import { fontSize } from '../../theme/theme';
 
 const Index = () => {
     return (
@@ -72,6 +73,7 @@ const Img = styled.img`
 
 const NameDescr = styled.div`
     margin-left: 10px;
+    font-size: ${fontSize.fontText};
 
     p{
         display: -webkit-box;
@@ -83,7 +85,6 @@ const NameDescr = styled.div`
 
     p:first-child{
         margin: 0;
-        font-size: 12pt;
         font-weight: 600;
         /* para cortar el texto que no de y lo sustituye por "..." */
         display: -webkit-box;

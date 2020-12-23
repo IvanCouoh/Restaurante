@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color } from '../../theme/theme';
+import { fontSize } from '../../theme/theme';
 
 const FooterHome = () => {
     return (
@@ -15,18 +17,19 @@ const FooterHome = () => {
 const Footer = styled.footer`
     width: 100%;
     height: 80px;
-    background-color: #22272d;
+    background-color: ${color.secundaryColor};
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: ${fontSize.fontFooter};
 
     p{
         text-align: center;
-        color: #fff;
+        color: ${color.white};
     }
 
     span{
-        color: #E51B23;
+        color: ${color.primaryColor};
     } 
 `;
 

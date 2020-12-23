@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import '../../App.css';
 import GoToMenuImg from '../../assets/images/LogoAlaOrd.png';
 import { Link } from "react-router-dom";
+import { color } from '../../theme/theme';
+import { fontSize } from '../../theme/theme';
 
 const GoToMenuComponent = () => {
     return (
@@ -19,7 +21,7 @@ const GoToMenuComponent = () => {
 };
 
 const GoToMenu = styled.div`
-    background: #E51B23;
+    background: ${color.primaryColor};
     width: 100%;
     height: 150px;
     margin: 150px  0;
@@ -36,17 +38,18 @@ const GoToMenu = styled.div`
     }
 
     img{
-        background: #fff;
+        background: ${color.white};
         box-Shadow: 0 3px 6px rgba(57,73,76,0.4);
         position: absolute;
         display: flex;
         left:  25px;
+        border-radius: 10px;
     }
 
     p{
         text-align: center;
-        color: #fff;
-        font-size: 12pt;
+        color: ${color.white};
+        font-size: ${fontSize.fontText};
     }
 
     @media(max-width: 1080px){
@@ -62,9 +65,9 @@ const GoToMenu = styled.div`
 
 const BtnGoToMenu = styled.button`
     padding: 10px;
-    background: #fff;
-    color: #E51B23;
-    font-size: 12pt;
+    background: ${color.white};
+    color: ${color.primaryColor};
+    font-size: ${fontSize.fontText};
     font-weight: 500;
     width: 250px;
     border: none;

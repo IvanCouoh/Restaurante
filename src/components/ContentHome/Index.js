@@ -8,6 +8,8 @@ import { CgMathPlus } from "react-icons/cg";
 import { arrayMenu } from './ArrayMenu';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { color } from '../../theme/theme';
+import { fontSize } from '../../theme/theme';
 
 const Index = () => {
     const [menuBackground, setMenuBackground] = useState(false);
@@ -117,16 +119,16 @@ const WrapperHeader = styled.header`
     }
 
     .background{
-        background: #fff;
+        background: ${color.white};
         box-Shadow: 0 3px 6px rgba(57,73,76,0.4);
         transition: 0.5s ease-in-out;
         -webkit-transition: 0.5s ease-in-out;
 
         a{
-            color: #E51B23;
+            color: ${color.primaryColor};
         }
         a:hover{
-            text-decoration-color: #E51B23;
+            text-decoration-color: ${color.primaryColor};
             text-decoration: underline;
         }
     }
@@ -156,11 +158,11 @@ const WrapperHeader = styled.header`
         width: 100%;
         position: absolute;
         height: 100vh;
-        background-color: #fff;
+        background-color: ${color.white};
 
             a{
                 margin: 15px 0;
-                color: #E51B23;
+                color: ${color.primaryColor};
             }
         }
 
@@ -169,17 +171,17 @@ const WrapperHeader = styled.header`
     }
 
     a{
-        font-size: 13pt;
+        font-size: ${fontSize.fontText};
         font-weight: 500;
         margin: 0 25px;
         display: flex;
         align-items: center;
-        color: #fff;
+        color: ${color.white};
         text-decoration: none;
         cursor: pointer;
 
         &:hover{
-            color: #E51B23;
+            color: ${color.primaryColor};
             text-decoration: underline;
             font-weight: 500;
         }
@@ -210,11 +212,11 @@ const Hamburguesa = styled.span`
     margin: 0 15px;
     font-size: 35px;
     z-index: 300;
-    @media (max-width: 810px){color: #fff;}
+    @media (max-width: 810px){color: ${color.whiteoscuro};}
 `;
 
 const ScrollDown = styled.div`
-    color: #fff;
+    color: ${color.whiteoscuro};
     font-size: 65px;
     display: flex;
     flex-direction: column;
@@ -227,14 +229,14 @@ const ScrollDown = styled.div`
         font-size: 90px;
         font-weight: 600;
         background: none;
-        color: #fff;
+        color: ${color.white};
         margin: 120px 0 50px 0;
         text-shadow: 3px 2px 1px #aaa;
     }
 
     p{
         padding: 0 20%;
-        font-size: 14pt;
+        font-size: ${fontSize.fontSubTile};
         font-weight: 500;
         text-shadow: 1px 1px 1px #aaa;
         margin: 5px 0 40px 0;
@@ -253,7 +255,7 @@ const ScrollDown = styled.div`
 
 const SubTitleFavorite = styled.h1`
     text-align: center;
-    font-size: 18pt;
+    font-size: ${fontSize.fontTitle};
     margin: 40px 0;
 `;
 
@@ -273,6 +275,7 @@ const Galery = styled.div`
     p{
         width: 150px;
         text-align: center;
+        font-size: ${fontSize.fontText};
     }
 `;
 
@@ -294,9 +297,9 @@ const More = styled.div`
     border-radius: 50%;
 
     &:hover{
-        background: #E51B23;
+        background: ${color.primaryColor};
         cursor: pointer;
-        color: #f3f3f3;
+        color: ${color.white};
         font-weight: 500;
     }
 `;
