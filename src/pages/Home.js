@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePage from '../Containers/Home/HomePage';
+import HomePage from '../containers/Home/HomePage';
 
 const Home = () => {
     return (
