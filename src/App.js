@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import Home from './pages/Home';
 import Menu from "./pages/ClientUser/Menu";
+import Detalles from './pages/ClientUser/DishDetail';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 
@@ -25,6 +27,9 @@ function App() {
       <Switch>
         <Route path="/menu">
           <Menu />
+        </Route>
+        <Route path="/detalle">
+          <Detalles />
         </Route>
         <Route path="/">
           <Home />
