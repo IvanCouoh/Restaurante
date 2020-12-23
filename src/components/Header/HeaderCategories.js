@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AiFillHome } from "react-icons/ai";
+import { IoFastFoodSharp } from "react-icons/io5";
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 import { arrayCategories } from './ArrayCategories';
@@ -11,13 +12,18 @@ const HeaderCategories = () => {
         <>
             <Wrapper>
                 <LinkToHome>
-                    <Link to="/"><AiFillHome /> Inicio</Link>
+                    <Link className="link" to="/">
+                        <span><AiFillHome /><p>Inicio</p></span>
+                    </Link>
+                    <Link className="link" to="/menu">
+                        <span><p>Ver mi orden</p><IoFastFoodSharp /></span>
+                    </Link>
                 </LinkToHome>
                 <h1>MENÚ</h1>
                 <WrapperHeader>
                     {
                         arrayCategories.map((item, index) => (
-                            <p>{item.category}</p>
+                            <p key={index}>{item.category}</p>
                         ))
                     }
                 </WrapperHeader>
@@ -27,6 +33,7 @@ const HeaderCategories = () => {
 };
 
 const Wrapper = styled.div`
+    z-index: 100;
     display: flex;
     flex-direction: column;
     background-color: ${color.primaryColor};
@@ -42,14 +49,33 @@ const Wrapper = styled.div`
 `;
 
 const LinkToHome = styled.div`
-    color: ${color.white};
-    text-align: center;
-    margin-top: 10px;
-    
-    a:nth-child(1){
-        color: ${color.white};
-        font-size: ${fontSize.fontText};
+    height: auto;
+    background-color: ${color.primaryColor};
+    color: ${color.whiteoscuro};
+    font-size: ${fontSize.fontTitle};
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+
+    .link{
+        display: flex;
         text-decoration: none;
+        font-size: ${fontSize.fontText};
+        color: ${color.white};
+        align-items: center;
+        margin: 7px 0;
+    }
+
+    span{
+        margin-right: 7px;
+        display: flex;
+        align-items: center;
+
+    }
+    
+    p{
+        margin: 0 5px;
     }
 `;
 

@@ -63,7 +63,11 @@ const Name = styled.div`
 `;
 
 const ContainerDetail = styled.div`
-    margin: 0 15px;
+    margin: 0 15px 80px 15px;
+
+    @media(min-width: 810px){
+        margin: 0 20% 80px 20%;
+    }
 `;
 
 const AddOrder = styled.button`
@@ -74,7 +78,7 @@ const AddOrder = styled.button`
     border: none;
     outline: none;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
 `;
@@ -102,6 +106,7 @@ const MenosMasbtn = styled.button`
     font-size: ${fontSize.fontSubTile};
     padding: 0 10px;
     margin: 0;
+    outline: none;
 `;
 
 export default Index;

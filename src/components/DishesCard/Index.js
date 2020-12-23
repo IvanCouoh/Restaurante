@@ -2,18 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 import { arrayDishes } from './ArrayDishes';
 import { fontSize } from '../../theme/theme';
+import { color } from '../../theme/theme';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
     return (
         <Wrapper>
             {arrayDishes.map((item, index) => (
                 <Card key={index}>
-                    <Img src={item.img} />
-                    <NameDescr>
-                        <p>{item.name}</p>
-                        <p>${item.price}.00</p>
-                        <p>{item.description}</p>
-                    </NameDescr>
+                        <Img src={item.img} />
+                        <NameDescr>
+                            <p>{item.name}</p>
+                            <p>${item.price}.00</p>
+                            <p>{item.description}</p>
+                        </NameDescr>
+                    <Link to="/detalle" className="link">Ver platillo</Link>
                 </Card>
             ))}
         </Wrapper>
@@ -25,9 +28,21 @@ const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+
+    .link{
+        text-decoration: none;
+        color: ${color.black};
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        color: transparent;
+        background: none;
+    }
 `;
 
 const Card = styled.div`
+    position: relative;
+    z-index: 1;
     border-radius:7px;
     padding: 7px;
     width: 350px;
@@ -64,6 +79,9 @@ const Img = styled.img`
 
     @media(max-width: 450px){
         &{
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
             align-self: center;
             border-radius: 7px;
             margin-bottom: 7px;
