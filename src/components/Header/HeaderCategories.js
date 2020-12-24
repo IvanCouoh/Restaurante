@@ -6,86 +6,35 @@ import { IoFastFoodSharp } from "react-icons/io5";
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 import { arrayCategories } from './ArrayCategories';
+import { HeaderToHome } from '../../components/Header/HeaderBack';
 
 const HeaderCategories = () => {
     return (
         <>
-            <Wrapper>
-                <LinkToHome>
-                    <Link className="link" to="/">
-                        <span><AiFillHome /><p>Inicio</p></span>
-                    </Link>
-                    <Link className="link" to="/menu">
-                        <span><p>Ver mi orden</p><IoFastFoodSharp /></span>
-                    </Link>
-                </LinkToHome>
-                <h1>MENÚ</h1>
-                <WrapperHeader>
-                    {
-                        arrayCategories.map((item, index) => (
-                            <p key={index}>{item.category}</p>
-                        ))
-                    }
-                </WrapperHeader>
-            </Wrapper>
+            <HeaderToHome />
+            <MenuText>Menu</MenuText>
+            <WrapperHeader>
+                {
+                    arrayCategories.map((item, index) => (
+                        <p key={index}>{item.category}</p>
+                    ))
+                }
+            </WrapperHeader>
         </>
     );
 };
 
-const Wrapper = styled.div`
-    z-index: 100;
-    display: flex;
-    flex-direction: column;
-    background-color: ${color.primaryColor};
-    position: fixed;
-    top: 0;
-    width: 100%;
-    
-    h1{
-        color: ${color.white};
-        margin: 10px 0 5px 0;
-        text-align: center;
-    }
-`;
-
-const LinkToHome = styled.div`
-    height: auto;
-    background-color: ${color.primaryColor};
-    color: ${color.whiteoscuro};
-    font-size: ${fontSize.fontTitle};
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 15px;
-
-    .link{
-        display: flex;
-        text-decoration: none;
-        font-size: ${fontSize.fontText};
-        color: ${color.white};
-        align-items: center;
-        margin: 7px 0;
-    }
-
-    span{
-        margin-right: 7px;
-        display: flex;
-        align-items: center;
-
-    }
-    
-    p{
-        margin: 0 5px;
-    }
-`;
-
 const WrapperHeader = styled.header`
-    height: 75px;
+    height: 70px;
     background-color: ${color.primaryColor};
     display: flex;
     align-items: center;
     overflow: auto;
     box-shadow: 0 4px 4px rgba(57,73,76,0.2);
+    position: sticky;
+    top: 33px;
+    width: 100%;
+    z-index: 100;
     
     p{
         color: ${color.white};
@@ -101,6 +50,14 @@ const WrapperHeader = styled.header`
         -ms-user-select: none;
         user-select: none; 
     }
+`;
+
+const MenuText = styled.h1`
+    color: ${color.white};
+    background-color: ${color.primaryColor};
+    text-align: center;
+    margin: 33px 0 0 0;
+    z-index: 100;
 `;
 
 export default HeaderCategories;

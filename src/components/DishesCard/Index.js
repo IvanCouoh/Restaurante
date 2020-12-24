@@ -24,7 +24,7 @@ const Index = () => {
 };
 
 const Wrapper = styled.div`
-    margin: 170px 15px 15px 15px;
+    /* margin: 170px 15px 15px 15px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

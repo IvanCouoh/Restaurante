@@ -1,11 +1,11 @@
 import React from 'react';
-import HeaderBack from '../../components/Header/HeaderBack';
 import Img from '../../components/ImgDetail/Index';
+import { Headerback } from '../../components/Header/HeaderBack';
 
 const Index = () => {
     return (
         <div>
-            <HeaderBack />
+            <Headerback />
             <Img />
         </div>
     );
