@@ -10,12 +10,12 @@ const Index = () => {
         <Wrapper>
             {arrayDishes.map((item, index) => (
                 <Card key={index}>
-                        <Img src={item.img} />
-                        <NameDescr>
-                            <p>{item.name}</p>
-                            <p>${item.price}.00</p>
-                            <p>{item.description}</p>
-                        </NameDescr>
+                    <Img src={item.img} />
+                    <NameDescr>
+                        <p>{item.name}</p>
+                        <p>${item.price}.00</p>
+                        <p>{item.description}</p>
+                    </NameDescr>
                     <Link to="/detalle" className="link">Ver platillo</Link>
                 </Card>
             ))}
@@ -24,7 +24,6 @@ const Index = () => {
 };
 
 const Wrapper = styled.div`
-    /* margin: 170px 15px 15px 15px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

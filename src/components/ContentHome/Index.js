@@ -114,7 +114,6 @@ const WrapperHeader = styled.header`
 
     img{
         width: 240px;
-        margin: 0 25px;
         cursor: pointer;
     }
 

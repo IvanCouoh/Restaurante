@@ -6,13 +6,13 @@ import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 import { Link } from 'react-router-dom';
 
-export const Headerback = () => {
+export const HeaderMenu = () => {
     return (
         <Wrapper>
             <Link className="link" to="/menu">
                 <span><IoIosArrowBack /><p>Atrás</p></span>
             </Link>
-            <Link className="link" to="/menu">
+            <Link className="link" to="/mi-orden">
                 <span><p>Ver orden</p><IoFastFoodSharp /></span>
             </Link>
         </Wrapper>
@@ -25,7 +25,20 @@ export const HeaderToHome = () => {
             <Link className="link" to="/">
                 <span><IoIosArrowBack /><p>Inicio</p></span>
             </Link>
-            <Link className="link" to="/menu">
+            <Link className="link" to="/mi-orden">
+                <span><p>Ver orden</p><IoFastFoodSharp /></span>
+            </Link>
+        </Wrapper>
+    );
+}
+
+export const HeaderToDetail = () => {
+    return (
+        <Wrapper>
+            <Link className="link" to="/">
+                <span><IoIosArrowBack /><p>Inicio</p></span>
+            </Link>
+            <Link className="link" to="/mi-orden">
                 <span><p>Ver orden</p><IoFastFoodSharp /></span>
             </Link>
         </Wrapper>
@@ -60,7 +73,6 @@ const Wrapper = styled.header`
         margin-right: 7px;
         display: flex;
         align-items: center;
-
     }
     
     p{

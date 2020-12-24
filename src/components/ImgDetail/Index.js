@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import img1 from '../../assets/images/img1-galery.jpg';
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
+import AddToList from '../Button/Index';
 
 const Index = () => {
     return (
@@ -29,7 +30,7 @@ const Index = () => {
                     <p>Total a pagar: <span>$580.00 </span></p>
                 </AlightItems>
                 <hr />
-                <AddOrder>Añadir a la lista</AddOrder>
+                <AddToList>Añadir a la lista</AddToList>
             </ContainerDetail>
         </>
     );
@@ -68,19 +69,6 @@ const ContainerDetail = styled.div`
     @media(min-width: 810px){
         margin: 0 20% 80px 20%;
     }
-`;
-
-const AddOrder = styled.button`
-    height: 60px;
-    background: ${color.primaryColor};
-    color: ${color.white};
-    font-size: ${fontSize.fontText};
-    border: none;
-    outline: none;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
 `;
 
 const AlightItems = styled.div`
