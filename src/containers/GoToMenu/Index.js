@@ -1,22 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../App.css';
-import GoToMenuImg from '../../assets/images/LogoAlaOrd.png';
-import { Link } from "react-router-dom";
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
+import GoToMenuImg from '../../assets/images/LogoAlaOrd.png';
+import LinkButtom from '../../components/Buttons/WhiteButton';
 
-const GoToMenuComponent = () => {
+const Index = () => {
     return (
-        <>
-            <GoToMenu>
-                <img src={GoToMenuImg} alt="Ir al menú" />
-                <div>
-                    <p>Estamos A La Orden, ve al menú y ordena ahora </p>
-                    <Link to="/menu"><BtnGoToMenu>Ir al menú</BtnGoToMenu></Link>
-                </div>
-            </GoToMenu>
-        </>
+        <GoToMenu>
+            <img src={GoToMenuImg} alt="Ir al menú" />
+            <div>
+                <p>Estamos A La Orden, ve al menú y ordena ahora </p>
+                <LinkButtom />
+            </div>
+        </GoToMenu>
     );
 };
 
@@ -63,18 +61,4 @@ const GoToMenu = styled.div`
     }
 `;
 
-const BtnGoToMenu = styled.button`
-    padding: 10px;
-    background: ${color.white};
-    color: ${color.primaryColor};
-    font-size: ${fontSize.fontText};
-    font-weight: 500;
-    width: 250px;
-    border: none;
-    border-radius: 10px;
-    outline: none;
-    text-decoration: none;
-    cursor: pointer;
-`;
-
-export default GoToMenuComponent;
+export default Index;

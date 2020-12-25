@@ -2,22 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
-import { arrayCategories } from './ArrayCategories';
-import { HeaderToHome } from '../../components/Header/HeaderBack';
+import { arrayCategories } from '../../components/Arrays/Arrays';
 
-const HeaderCategories = () => {
+const TabButton = () => {
     return (
-        <>
-            <HeaderToHome />
-            <MenuText>Menu</MenuText>
-            <WrapperHeader>
-                {
-                    arrayCategories.map((item, index) => (
-                        <p key={index}>{item.category}</p>
-                    ))
-                }
-            </WrapperHeader>
-        </>
+        <WrapperHeader>
+            {
+                arrayCategories.map((item, index) => (
+                    <button key={index}>{item.category}</button>
+                ))
+            }
+        </WrapperHeader>
     );
 };
 
@@ -33,12 +28,14 @@ const WrapperHeader = styled.header`
     width: 100%;
     z-index: 100;
     
-    p{
+    button{
+        background-color: ${color.primaryColor};
         color: ${color.white};
         font-size: ${fontSize.fontText};
         margin: 0 15px;
         border-radius: 25px;
         border: 1.5px solid ${color.white};
+        outline: none;
         padding: 10px 20px;
         box-Shadow: 0 3px 6px rgba(57,73,76,0.4);
         /* para no seleccionar el texto */
@@ -49,12 +46,4 @@ const WrapperHeader = styled.header`
     }
 `;
 
-const MenuText = styled.h1`
-    color: ${color.white};
-    background-color: ${color.primaryColor};
-    text-align: center;
-    margin: 33px 0 0 0;
-    z-index: 100;
-`;
-
-export default HeaderCategories;
+export default TabButton;

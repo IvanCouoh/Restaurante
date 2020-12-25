@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Home from './pages/Home';
-import Menu from "./pages/ClientUser/Menu";
-import Detalles from './pages/ClientUser/DishDetail';
-import ViewOrder from './containers/ViewOrder';
+import Menu from "./pages/Menu";
+import Details from './pages/DishDetail';
+import ViewOrder from './pages/Order';
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,7 +30,7 @@ function App() {
           <Menu />
         </Route>
         <Route path="/detalle">
-          <Detalles />
+          <Details />
         </Route>
         <Route path="/mi-orden">
           <ViewOrder />

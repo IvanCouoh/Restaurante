@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 
-const Index = () => {
+const RedButton = () => {
     return (
         <div>
-            <BtnRed>Añadir a la lista</BtnRed>
+            <BtnRed>Boton rojo</BtnRed>
         </div>
     );
 };
@@ -24,4 +24,4 @@ const BtnRed = styled.button`
     left: 0;
 `;
 
-export default Index;
+export default RedButton;

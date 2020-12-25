@@ -3,14 +3,16 @@ import styled from 'styled-components';
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 
-const FooterHome = () => {
+const Index = () => {
     return (
-        <Footer>
-            <p>
-                <span>A La Orden © </span>
+        <div>
+            <Footer>
+                <p>
+                    <span>A La Orden © </span>
                 Todos los derechos reservados.
             </p>
-        </Footer>
+            </Footer>
+        </div>
     );
 };
 
@@ -33,4 +35,4 @@ const Footer = styled.footer`
     } 
 `;
 
-export default FooterHome;
+export default Index;

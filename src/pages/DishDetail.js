@@ -1,13 +1,16 @@
 import React from 'react';
+import { HeaderMenu } from '../components/Headers/RedHeader';
 import styled from 'styled-components';
-import img1 from '../../assets/images/img1-galery.jpg';
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
-import AddToList from '../Button/Index';
+import img1 from '../assets/images/img1-galery.jpg';
+import BtnMasMenos from '../components/Buttons/MoreLessButtons';
+import BtnRed from '../components/Buttons/RedButton';
+import { color } from '../theme/theme';
+import { fontSize } from '../theme/theme';
 
-const Index = () => {
+const DishDetail = () => {
     return (
         <>
+            <HeaderMenu />
             <Wrapper>
                 <Img src={img1} alt="platillo" />
                 <Name>
@@ -17,11 +20,13 @@ const Index = () => {
                 </Name>
             </Wrapper>
             <ContainerDetail>
-                <p>Espacio para mostrar toda la descripción del platillo...</p>
+                <p>Espacio para mostrar toda la descripción del platillo...
+                Espacio para mostrar toda la descripción del platillo...
+                </p>
                 <p>$120.00</p>
                 <hr />
                 <AlightItems>
-                    <p>Cantidad: <span><MenosMasbtn className="menos">-</MenosMasbtn>2<MenosMasbtn className="mas">+</MenosMasbtn></span></p>
+                    <p>Cantidad: <span><BtnMasMenos /><p>10</p><BtnMasMenos /></span></p>
                 </AlightItems>
                 <AlightItems>
                     <p>Total del platillo: <span>$240.00 </span></p>
@@ -30,7 +35,7 @@ const Index = () => {
                     <p>Total a pagar: <span>$580.00 </span></p>
                 </AlightItems>
                 <hr />
-                <AddToList>Añadir a la lista</AddToList>
+                <BtnRed>Añadir a la lista</BtnRed>
             </ContainerDetail>
         </>
     );
@@ -75,26 +80,16 @@ const AlightItems = styled.div`
     p{
         display: flex;
         justify-content: space-between;
-
-    }
-    .mas{
-        margin-left: 10px;
     }
 
-    .menos{
-        margin-right: 10px;
+    p:nth-child(2){
+        margin: 0;
+        padding: 2px 5px 0px 5px;
+    }
+
+    span{
+        display: flex;
     }
 `;
 
-const MenosMasbtn = styled.button`
-    background: ${color.whiteoscuro};
-    color: ${color.primaryColor};
-    border: 1px solid ${color.primaryColor};
-    border-radius: 10px;
-    font-size: ${fontSize.fontSubTile};
-    padding: 0 10px;
-    margin: 0;
-    outline: none;
-`;
-
-export default Index;
+export default DishDetail;

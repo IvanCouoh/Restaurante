@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { arrayDishes } from './ArrayDishes';
+import { arrayDishes } from '../../components/Arrays/Arrays';
 import { fontSize } from '../../theme/theme';
 import { color } from '../../theme/theme';
 import { Link } from 'react-router-dom';
 
-const Index = () => {
+const MenuCard = () => {
     return (
         <Wrapper>
             {arrayDishes.map((item, index) => (
@@ -112,4 +112,4 @@ const NameDescr = styled.div`
     }
 `;
 
-export default Index;
+export default MenuCard;
