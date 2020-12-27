@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 
-const RedButton = () => {
+const RedButton = ({text}) => {
     return (
         <div>
-            <BtnRed>Boton rojo</BtnRed>
+            <BtnRed>{text}</BtnRed>
         </div>
     );
 };

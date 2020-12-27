@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 
-const WhiteButton = () => {
+const WhiteButton = ({pathLink, text}) => {
     return (
         <div>
-            <Link to="/menu"><BtnGoToMenu>Ir al menú</BtnGoToMenu></Link>
+            <Link to={pathLink}><BtnGoToMenu>{text}</BtnGoToMenu></Link>
         </div>
     );
 };

@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 
-const MoreLessButtons = () => {
+const MoreLessButtons = ({ text }) => {
     return (
         <Wrapper>
-            <MenosMasbtn>-</MenosMasbtn>
+            <MenosMasbtn>{text}</MenosMasbtn>
         </Wrapper>
     );
 };

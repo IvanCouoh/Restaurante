@@ -1,17 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HeaderToHome } from '../../components/Headers/RedHeader';
+import HeaderToHome from '../../components/Headers/RedHeader';
 import Categories from '../../components/Buttons/TabButton';
 import { color } from '../../theme/theme';
-import Dishes from '../../components/Cards/MenuCard';
+import { IoFastFoodSharp } from "react-icons/io5";
 
 const Index = () => {
     return (
         <>
-            <HeaderToHome />
-            <MenuText>Menu</MenuText>
+            <HeaderToHome linkLeft="/" textLeft="Inicio" linkRight="/mi-orden" textRight="Ver mi orden" icon={<IoFastFoodSharp />} />
+            <MenuText>Menú</MenuText>
             <Categories />
-            <Dishes />
         </>
     );
 };

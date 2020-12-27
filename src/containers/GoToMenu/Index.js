@@ -12,7 +12,7 @@ const Index = () => {
             <img src={GoToMenuImg} alt="Ir al menú" />
             <div>
                 <p>Estamos A La Orden, ve al menú y ordena ahora </p>
-                <LinkButtom />
+                <LinkButtom pathLink="/menu" text="Ir al menú" />
             </div>
         </GoToMenu>
     );

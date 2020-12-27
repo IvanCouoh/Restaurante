@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Img1 from '../../assets/images/img2-galery.jpg';
 import BtnMasMenos from '../../components/Buttons/MoreLessButtons';
+import BtnWhite from '../../components/Buttons/WhiteButton';
 import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 import { arrayListOrder } from "../../components/Arrays/Arrays";
@@ -19,14 +20,14 @@ const OrderCard = () => {
                                 <OrderData>
                                     <Quantity>
                                         <p>Cantidad</p>
-                                        <p><span><BtnMasMenos /><p>{item.cantidad}</p><BtnMasMenos /></span></p>
+                                        <p><span><BtnMasMenos text="-"/><p>{item.cantidad}</p><BtnMasMenos text="+"/></span></p>
                                     </Quantity>
                                     <p>${item.price}.00</p>
                                 </OrderData>
                             </InformationPlate>
                         </ItemContainer>
                         <Remove>
-                            <button>Eliminar de la lista</button>
+                            <BtnWhite text="Eliminar de la lista" />
                         </Remove>
                     </ItemPlate>
                 ))

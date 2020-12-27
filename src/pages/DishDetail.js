@@ -1,16 +1,17 @@
 import React from 'react';
-import { HeaderMenu } from '../components/Headers/RedHeader';
+import HeaderMenu from '../components/Headers/RedHeader';
 import styled from 'styled-components';
 import img1 from '../assets/images/img1-galery.jpg';
 import BtnMasMenos from '../components/Buttons/MoreLessButtons';
 import BtnRed from '../components/Buttons/RedButton';
 import { color } from '../theme/theme';
 import { fontSize } from '../theme/theme';
+import { IoFastFoodSharp } from "react-icons/io5";
 
 const DishDetail = () => {
     return (
         <>
-            <HeaderMenu />
+            <HeaderMenu linkLeft="/menu" textLeft="Menú" linkRight="/mi-orden" textRight="Ver mi orden" icon={<IoFastFoodSharp />} />
             <Wrapper>
                 <Img src={img1} alt="platillo" />
                 <Name>
@@ -26,7 +27,7 @@ const DishDetail = () => {
                 <p>$120.00</p>
                 <hr />
                 <AlightItems>
-                    <p>Cantidad: <span><BtnMasMenos /><p>10</p><BtnMasMenos /></span></p>
+                    <p>Cantidad: <span><BtnMasMenos text="-" /><p>10</p><BtnMasMenos text="+" /></span></p>
                 </AlightItems>
                 <AlightItems>
                     <p>Total del platillo: <span>$240.00 </span></p>
@@ -35,7 +36,7 @@ const DishDetail = () => {
                     <p>Total a pagar: <span>$580.00 </span></p>
                 </AlightItems>
                 <hr />
-                <BtnRed>Añadir a la lista</BtnRed>
+                <BtnRed text="Añadir a la lista"></BtnRed>
             </ContainerDetail>
         </>
     );

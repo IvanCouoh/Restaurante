@@ -6,40 +6,14 @@ import { color } from '../../theme/theme';
 import { fontSize } from '../../theme/theme';
 import { Link } from 'react-router-dom';
 
-export const HeaderMenu = () => {
+const Header = ({ linkLeft, linkRight, textLeft, textRight, icon }) => {
     return (
         <Wrapper>
-            <Link className="link" to="/menu">
-                <span><IoIosArrowBack /><p>Atrás</p></span>
+            <Link className="link" to={linkLeft}>
+                <span><IoIosArrowBack /><p>{textLeft}</p></span>
             </Link>
-            <Link className="link" to="/mi-orden">
-                <span><p>Ver orden</p><IoFastFoodSharp /></span>
-            </Link>
-        </Wrapper>
-    );
-}
-
-export const HeaderToHome = () => {
-    return (
-        <Wrapper>
-            <Link className="link" to="/">
-                <span><IoIosArrowBack /><p>Inicio</p></span>
-            </Link>
-            <Link className="link" to="/mi-orden">
-                <span><p>Ver orden</p><IoFastFoodSharp /></span>
-            </Link>
-        </Wrapper>
-    );
-}
-
-export const HeaderToDetail = () => {
-    return (
-        <Wrapper>
-            <Link className="link" to="/">
-                <span><IoIosArrowBack /><p>Inicio</p></span>
-            </Link>
-            <Link className="link" to="/mi-orden">
-                <span><p>Ver orden</p><IoFastFoodSharp /></span>
+            <Link className="link" to={linkRight}>
+                <span><p>{textRight}</p>{icon}</span>
             </Link>
         </Wrapper>
     );
@@ -79,3 +53,5 @@ const Wrapper = styled.header`
         margin: 0 5px;
     }
 `;
+
+export default Header;

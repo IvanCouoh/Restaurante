@@ -3,11 +3,11 @@ import Home from './pages/Home';
 import Menu from "./pages/Menu";
 import Details from './pages/DishDetail';
 import ViewOrder from './pages/Order';
+import AddDish from './pages/AddDish';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
 import { useLocation } from 'react-router-dom';
 
@@ -26,6 +26,9 @@ function App() {
     <Router>
       <ScrollToTop />
       <Switch>
+        <Route path="/nuevo-platillo">
+          <AddDish />
+        </Route>
         <Route path="/menu">
           <Menu />
         </Route>

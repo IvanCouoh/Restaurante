@@ -1,15 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HeaderMenu } from '../components/Headers/RedHeader';
+import HeaderMenu from '../components/Headers/RedHeader';
 import { color } from '../theme/theme';
 import { fontSize } from '../theme/theme';
 import BtnRed from '../components/Buttons/RedButton';
 import OrderCard from '../components/Cards/OrderCard';
+import { IoFastFoodSharp } from "react-icons/io5";
 
 const Order = () => {
     return (
         <div>
-            <HeaderMenu />
+            <HeaderMenu linkLeft="/detalle" textLeft="Atrás" linkRight="/mi-orden" textRight="Ver mi orden" icon={<IoFastFoodSharp />} />
             <WrapperOrder>
                 <OrderCard />
             </WrapperOrder>
@@ -17,7 +18,7 @@ const Order = () => {
                 <p>Total a pagar </p>
                 <p>$6,248.00</p>
             </TotalToPay>
-            <BtnRed />
+            <BtnRed text="Enviar orden" />
         </div>
     );
 };
