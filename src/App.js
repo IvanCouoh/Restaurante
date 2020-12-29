@@ -4,6 +4,7 @@ import Menu from "./pages/Menu";
 import Details from './pages/DishDetail';
 import ViewOrder from './pages/Order';
 import AddDish from './pages/AddDish';
+import Admin from './pages/IndexAdmin';
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,21 +27,12 @@ function App() {
     <Router>
       <ScrollToTop />
       <Switch>
-        <Route path="/nuevo-platillo">
-          <AddDish />
-        </Route>
-        <Route path="/menu">
-          <Menu />
-        </Route>
-        <Route path="/detalle">
-          <Details />
-        </Route>
-        <Route path="/mi-orden">
-          <ViewOrder />
-        </Route>
-        <Route path="/">
-          <Home />
-        </Route>
+        <Route path="/admin" component={Admin}></Route>
+        <Route path="/nuevo-platillo" component={AddDish}></Route>
+        <Route path="/menu" component={Menu}></Route>
+        <Route path="/detalle" component={Details}></Route>
+        <Route path="/mi-orden" component={ViewOrder}></Route>
+        <Route path="/" component={Home}></Route>
       </Switch>
     </Router>
   );

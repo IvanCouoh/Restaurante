@@ -5,31 +5,35 @@ import { fontSize } from '../theme/theme';
 import { color } from '../theme/theme';
 import img1 from '../assets/images/img2-galery.jpg';
 import UploadImage from '../components/UploadImage/Index';
+import Layout from "../components/Layout/Index";
 
 const AddDish = () => {
     return (
-        <Wrapper>
-            <ContainerForm>
-                <p>
-                    Nuevo platillo
+        <Layout>
+            <Wrapper>
+                <ContainerForm>
+                    <p>
+                        Nuevo platillo
                 </p>
-                <Form>
-                    <InputsSection>
-                        <Input />
-                    </InputsSection>
-                    <Divider />
-                    <UploadImage />
-                </Form>
+                    <Form>
+                        <InputsSection>
+                            <Input />
+                        </InputsSection>
+                        <Divider />
+                        <UploadImage />
+                    </Form>
                     <Button>Guardar platillo</Button>
-            </ContainerForm>
-        </Wrapper>
+                </ContainerForm>
+            </Wrapper>
+        </Layout>
+
     );
 };
 
 const Wrapper = styled.div`
-    background-color: #f6f7f9;
+    /* background-color: #f6f7f9;
     height: 100vh;
-    padding-top: 10%;
+    padding-top: 10%; */
 `;
 
 const ContainerForm = styled.div`

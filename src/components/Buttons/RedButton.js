@@ -22,6 +22,7 @@ const BtnRed = styled.button`
     position: fixed;
     bottom: 0;
     left: 0;
+    cursor: pointer;
 `;
 
 export default RedButton;
