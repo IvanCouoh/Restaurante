@@ -25,7 +25,7 @@ export const Input = ({
             onBlur={onBlur}
             className={InputClassName}
           />
-          <label className="label">{text}</label>
+          <label for="" className="label">{text}</label>
         </div>
       </Wrapper>
     </>
@@ -59,7 +59,7 @@ export const Textarea = ({
             onChange={onChange}
             className={InputClassName}
           />
-          <label className="label">{text}</label>
+          <label for="" className="label">{text}</label>
         </div>
       </Wrapper>
     </>
@@ -91,7 +91,6 @@ const Wrapper = styled.div`
         width: 310px;
         height: 5px;
         font-size: ${fontSize.fontFooter};
-        font-family: 'Montserrat', sans-serif;
         border: 1px solid #DADCE0;
         border-radius: 5px;
         outline: none;
@@ -145,6 +144,7 @@ const Wrapper = styled.div`
         min-width: 310px;
         max-width: 310px;
     }
+
     
     @media(max-width: 490px){
         .input, .textarea{

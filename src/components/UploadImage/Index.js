@@ -23,6 +23,8 @@ const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 203px;
+    height: 203px;
     
     input{
         width: 100%;

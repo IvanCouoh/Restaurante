@@ -111,6 +111,7 @@ const Wrapper = styled.div`
         top: 0;
         height: 100vh;
         padding: 50px 15px 15px 15px;
+        z-index: 1000;
 
         display: flex;
         flex-direction: column;
@@ -188,7 +189,6 @@ const Wrapper = styled.div`
 const BtnMenuClick = styled.span`
     display: flex;
     flex-direction: column;
-    padding-top: 10px;
     margin-right: 15px;
     font-size: ${fontSize.fontIconMenu};
     z-index: 300;

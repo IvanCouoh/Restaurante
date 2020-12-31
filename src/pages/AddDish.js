@@ -1,28 +1,94 @@
 import React from 'react';
-import Input from '../components/Input/Index';
+import { Input, Textarea } from '../components/Input/Index';
 import styled from 'styled-components';
 import { fontSize } from '../theme/theme';
 import { color } from '../theme/theme';
 import img1 from '../assets/images/img2-galery.jpg';
 import UploadImage from '../components/UploadImage/Index';
 import Layout from "../components/Layout/Index";
+import { useFormik } from 'formik';
+import * as yup from 'yup';
+import Message from '../components/ValidationInputs/Index';
 
 const AddDish = () => {
+
+    const formik = useFormik({
+        initialValues: {
+            name: '',
+            price: '',
+            description: '',
+        },
+        validationSchema: yup.object({
+            name: yup.string()
+                .required("Necesario poner nombre al platillo."),
+            price: yup.number()
+                .required("¿Cuánto cuesta el platillo?")
+                .moreThan(0, "No puede tener precios negativos"),
+            description: yup.string()
+                .required("Escribe una breve descripción del platillo.")
+                .min(8, "La descripción es muy corta"),
+        }),
+        onSubmit: (data) => {
+            console.log(data);
+        }
+    })
+
     return (
         <Layout>
             <Wrapper>
                 <ContainerForm>
-                    <p>
-                        Nuevo platillo
-                </p>
-                    <Form>
-                        <InputsSection>
-                            <Input />
-                        </InputsSection>
-                        <Divider />
-                        <UploadImage />
+                    <p> Nuevo platillo </p>
+                    <Form onSubmit={formik.handleSubmit}>
+                        <WrapperFormData>
+                            <InputsSection>
+                                <Input
+                                    name="name"
+                                    text="Nombre del platillo"
+                                    type="text"
+                                    InputClassName="input"
+                                    divClassName="div"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.name}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.errors.name && formik.touched.name && (
+                                    <Message text={formik.errors.name}></Message>
+                                )}
+                                <Input
+                                    name="price"
+                                    text="Presio del platillo"
+                                    type="number"
+                                    InputClassName="input"
+                                    divClassName="div"
+                                    onChange={formik.handleChange}
+                                    value={formik.values.price}
+                                    onBlur={formik.handleBlur}
+                                />
+                                {formik.errors.price && formik.touched.price && (
+                                    <Message text={formik.errors.price}></Message>
+                                )}
+                                <Textarea
+                                    name="description"
+                                    text="Descripción"
+                                    type="textarea"
+                                    cols="30"
+                                    rows="10"
+                                    InputClassName="input textarea"
+                                    divClassName="div-textarea"
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    value={formik.values.description}
+                                />
+                                {formik.errors.description && formik.touched.description && (
+                                    <Message text={formik.errors.description}></Message>
+                                )}
+                            </InputsSection>
+                            <Divider />
+                            <UploadImage />
+                        </WrapperFormData>
+                        <Button type="submit">Guardar platillo</Button>
+                        {/* <button type="submit">Submit</button> */}
                     </Form>
-                    <Button>Guardar platillo</Button>
                 </ContainerForm>
             </Wrapper>
         </Layout>
@@ -54,7 +120,7 @@ const ContainerForm = styled.div`
         font-size: ${fontSize.fontTitle};
     }
 
-    @media(max-width: 790px){
+    @media(max-width: 845px){
        &{
             width: 342px;
         }
@@ -69,14 +135,7 @@ const ContainerForm = styled.div`
 
 const Form = styled.form`
     display: flex;
-    flex-direction: row;
-
-    @media(max-width: 790px){
-       &{
-            display: flex;
-            flex-direction: column;
-        }
-    }
+    flex-direction: column;
 `;
 
 const Divider = styled.span`
@@ -84,7 +143,7 @@ const Divider = styled.span`
     height: auto;
     margin: 0 40px;;
 
-    @media(max-width: 790px){
+    @media(max-width: 845px){
        &{
             display: none;
         }
@@ -103,7 +162,24 @@ const ImageULSection = styled.div`
     }
 `;
 
-const InputsSection = styled.div``;
+const InputsSection = styled.div`
+    @media(max-width: 845px){
+       &{
+            margin-bottom: 30px;
+        }
+    }
+`;
+
+const WrapperFormData = styled.div`
+    display: flex;
+
+    @media(max-width: 845px){
+        &{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+`;
 
 const Button = styled.button`
     width: 100%;
@@ -112,8 +188,10 @@ const Button = styled.button`
     font-size: ${fontSize.fontText};
     border: none;
     border-radius: 10px;
+    outline: none;
     height: 40px;
     margin: 20px 0 20px 0;
+    cursor: pointer;
 `;
 
 export default AddDish;
