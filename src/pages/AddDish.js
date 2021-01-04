@@ -3,7 +3,7 @@ import { Input, Textarea } from '../components/Input/Index';
 import styled from 'styled-components';
 import { fontSize } from '../theme/theme';
 import { color } from '../theme/theme';
-import img1 from '../assets/images/img2-galery.jpg';
+// import UploadImage from '../components/UploadImage/EsteFunciona';
 import UploadImage from '../components/UploadImage/Index';
 import Layout from "../components/Layout/Index";
 import { useFormik } from 'formik';
@@ -17,6 +17,7 @@ const AddDish = () => {
             name: '',
             price: '',
             description: '',
+            image: '',
         },
         validationSchema: yup.object({
             name: yup.string()
@@ -84,7 +85,13 @@ const AddDish = () => {
                                 )}
                             </InputsSection>
                             <Divider />
-                            <UploadImage />
+                            <UploadSection>
+                                <UploadImage
+                                    onImageLoaded={file => formik.setFieldValue("file", file)} />
+                                {formik.errors.image && formik.touched.image && (
+                                    <Message text={formik.errors.image}></Message>
+                                )}
+                            </UploadSection>
                         </WrapperFormData>
                         <Button type="submit">Guardar platillo</Button>
                         {/* <button type="submit">Submit</button> */}
@@ -112,7 +119,7 @@ const ContainerForm = styled.div`
     border: none;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color: #fff;
+    background-color: ${color.white};
 
     p{
         margin: -10px 0 20px 0;
@@ -150,6 +157,11 @@ const Divider = styled.span`
     }
 `;
 
+const UploadSection = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
 const ImageULSection = styled.div`
     width: 100%;
 
@@ -177,8 +189,9 @@ const WrapperFormData = styled.div`
         &{
                 display: flex;
                 flex-direction: column;
-            }
+                margin-bottom: 15px;
         }
+    }
 `;
 
 const Button = styled.button`
