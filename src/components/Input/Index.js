@@ -106,7 +106,7 @@ const Wrapper = styled.div`
         top: 10px;
         padding: 0 .25rem;
         background-color: #fff;
-        color: #80868B;
+        /* color: #80868B; */
         font-size: 14px;
         transition: .3s;
         display: flex;

@@ -77,7 +77,7 @@ const Container = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    /* margin: auto; */
 `;
 
 const ImgPreview = styled.div`

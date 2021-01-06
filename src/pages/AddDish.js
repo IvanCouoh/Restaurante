@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Input, Textarea } from '../components/Input/Index';
 import styled from 'styled-components';
 import { fontSize } from '../theme/theme';
@@ -9,14 +9,34 @@ import Layout from "../components/Layout/Index";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Message from '../components/ValidationInputs/Index';
+import { arrayCategories } from '../components/Arrays/Arrays';
 
 const AddDish = () => {
+
+    const [idCategory, setIdCategory] = useState(-1);
+    const [validateCategory, setValidateCategory] = useState(true);
+    const [categoria, setCategoria] = useState('');
+
+    const indexCategory = (e) => {
+        const indexOption = e.target.value;
+
+        if (indexOption == '-1') {
+            console.log('El indice es', indexOption);
+            setIdCategory(indexOption);
+            setValidateCategory(false)
+        } else {
+            console.log('Es mayor a 1', indexOption);
+            setIdCategory(indexOption);
+            setValidateCategory(true);
+        }
+    }
 
     const formik = useFormik({
         initialValues: {
             name: '',
             price: '',
             description: '',
+            category: '',
             image: '',
         },
         validationSchema: yup.object({
@@ -28,9 +48,13 @@ const AddDish = () => {
             description: yup.string()
                 .required("Escribe una breve descripción del platillo.")
                 .min(8, "La descripción es muy corta"),
+            category: yup.string()
+                .required('Asigne un categoría al platillo.'),
+            // image: yup.mixed().required(''),
         }),
         onSubmit: (data) => {
             console.log(data);
+            indexCategory()
         }
     })
 
@@ -55,6 +79,28 @@ const AddDish = () => {
                                 {formik.errors.name && formik.touched.name && (
                                     <Message text={formik.errors.name}></Message>
                                 )}
+                                <Select
+                                    id="category"
+                                    name="category"
+                                    onClick={indexCategory}
+                                    value={formik.values.category}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                >
+                                    <option value={-1}>Selecciona una categoría</option>
+                                    {
+                                        arrayCategories.map((item, index) => (
+                                            <option key={index} value={index}>{item.category}</option>
+                                        ))
+                                    }
+                                </Select>
+                                {
+                                    formik.errors.category && formik.touched.category &&
+                                    (<Validator>{formik.errors.category}</Validator>)
+                                }
+                                {
+                                    validateCategory ? false : <Validator2>Asigne un categoría al platillo.</Validator2>
+                                }
                                 <Input
                                     name="price"
                                     text="Presio del platillo"
@@ -162,18 +208,6 @@ const UploadSection = styled.div`
     flex-direction: column;
 `;
 
-const ImageULSection = styled.div`
-    width: 100%;
-
-    img{
-        margin: auto;
-        height: 200px;
-        width: 200px;
-        border: 2px dashed #fff;
-        background-color: #abc;
-    }
-`;
-
 const InputsSection = styled.div`
     @media(max-width: 845px){
        &{
@@ -187,9 +221,9 @@ const WrapperFormData = styled.div`
 
     @media(max-width: 845px){
         &{
-                display: flex;
-                flex-direction: column;
-                margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
         }
     }
 `;
@@ -205,6 +239,37 @@ const Button = styled.button`
     height: 40px;
     margin: 20px 0 20px 0;
     cursor: pointer;
+`;
+
+const Select = styled.select`
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    outline: none;
+    cursor: pointer;
+    font-size: ${fontSize.fontFooter};
+    font-family: 'Montserrat',sans-serif;
+    border: 1px solid #dadce0;
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    option{
+        margin: 13px 0;
+    }
+`;
+
+const Validator = styled.p`
+    text-align: start!important;
+    color: red;
+    font-size: 10pt!important;
+    margin: -30px 0 25px 15px!important;
+`;
+
+const Validator2 = styled.p`
+    text-align: start!important;
+    color: red;
+    font-size: 10pt!important;
+    margin: -41px 0 25px 15px!important;
 `;
 
 export default AddDish;
