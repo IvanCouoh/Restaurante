@@ -54,7 +54,7 @@ const Ultimo = () => {
                             </label>
                         </>
                     )}
-                    <Required>Imagen requerida*</Required>
+                    {/* <Required>{onChangeImg ? onChangeImg : ''}</Required> */}
                 </ImgPreview>
                 {imgPreview && (
                     <>
@@ -146,7 +146,7 @@ const Validator = styled.p`
 `;
 
 const Required = styled.p`
-    margin: 5px 0px 0px 0px!important;
+    margin: 33px 0px 0px 0px!important;
     font-size: ${fontSize.fontFooter}!important;
 `;
 

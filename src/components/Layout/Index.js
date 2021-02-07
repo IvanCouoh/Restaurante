@@ -26,23 +26,23 @@ const Index = ({ children }) => {
                     </BtnMenuClick>
                 </header>
                 <aside className={clickIcon ? "aside show-Aside" : "aside hide-Aside"}>
-                    <div className={clickIcon ? "btn-container" : "btn-container-none"} title="Alta de platillo">
-                        <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"}>
-                            <IoFastFoodSharp />
-                        </span>
-                        <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Button>Alta de platillo</Button>
-                        </span>
-                    </div>
-
-                    <div className={clickIcon ? "btn-container" : "btn-container-none"} title="Gestión de platillos">
+                    <Link to="/gestion-platillos" className={clickIcon ? "btn-container" : "btn-container-none"} title="Gestión de platillos">
                         <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"}>
                             <AiFillSetting />
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Button>Gestión de platillos</Button>
+                            <Button to="/gestion-platillos">Gestión de platillos</Button>
                         </span>
-                    </div>
+                    </Link>
+
+                    <Link to="/nuevo-platillo" className={clickIcon ? "btn-container" : "btn-container-none"} title="Alta de platillo">
+                        <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"}>
+                            <IoFastFoodSharp />
+                        </span>
+                        <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
+                            <Button to="/nuevo-platillo">Alta de platillo</Button>
+                        </span>
+                    </Link>
 
                     <div className={clickIcon ? "btn-container" : "btn-container-none"} title="Cerrar sesión">
                         <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"}>
@@ -133,6 +133,7 @@ const Wrapper = styled.div`
         color: ${color.white};
         cursor: pointer;
         margin: 0 -15px;
+        text-decoration: none;
 
         &:hover{
             background: ${color.azulfuerteHover};

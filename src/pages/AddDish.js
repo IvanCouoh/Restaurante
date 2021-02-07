@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Input, Textarea } from '../components/Input/Index';
 import styled from 'styled-components';
 import { fontSize } from '../theme/theme';
 import { color } from '../theme/theme';
-// import UploadImage from '../components/UploadImage/EsteFunciona';
-import UploadImage from '../components/UploadImage/Index';
 import Layout from "../components/Layout/Index";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Message from '../components/ValidationInputs/Index';
-import { arrayCategories } from '../components/Arrays/Arrays';
+import { db, storage } from '../firebase/initBD';
+import { FiUpload } from "react-icons/fi";
 
 const AddDish = () => {
 
+    const [options, setOptions] = useState([])
     const [idCategory, setIdCategory] = useState(-1);
     const [validateCategory, setValidateCategory] = useState(true);
-    const [categoria, setCategoria] = useState('');
 
     const indexCategory = (e) => {
         const indexOption = e.target.value;
@@ -31,13 +30,21 @@ const AddDish = () => {
         }
     }
 
+    useEffect(() => {
+        let restQuery = db.collection('categories').get()
+        restQuery.then(function (snapshot) {
+            snapshot.forEach(function (doc) {
+                setOptions(prevState => [...prevState, doc.data()])
+            })
+        })
+    }, [])
+
     const formik = useFormik({
         initialValues: {
             name: '',
             price: '',
             description: '',
             category: '',
-            image: '',
         },
         validationSchema: yup.object({
             name: yup.string()
@@ -50,11 +57,34 @@ const AddDish = () => {
                 .min(8, "La descripción es muy corta"),
             category: yup.string()
                 .required('Asigne un categoría al platillo.'),
-            // image: yup.mixed().required(''),
         }),
-        onSubmit: (data) => {
+        onSubmit: async (data) => {
             console.log(data);
-            indexCategory()
+            // indexCategory()
+
+            const { name, price, description, category, file } = formik.values;
+
+            const storageRef = storage.ref(`/platillos/${Date.now()}_${file.name}`);
+            const task = storageRef.put(file);
+            task.on('state_changed', snapshot => { },
+                error => {
+                    console.log(error.message);
+                }, async () => {
+                    const imageURL = await (await task).ref.getDownloadURL()
+                    db.collection('prueba').doc()
+                        .set({
+                            createDate: new Date(),
+                            name,
+                            price,
+                            description,
+                            category,
+                            imageURL
+                        }).then(res => {
+                            console.log("EXITOSO");
+                        }).catch(error => {
+                            console.error("ERROR", error)
+                        })
+                })
         }
     })
 
@@ -88,18 +118,18 @@ const AddDish = () => {
                                     onBlur={formik.handleBlur}
                                 >
                                     <option value={-1}>Selecciona una categoría</option>
-                                    {
-                                        arrayCategories.map((item, index) => (
-                                            <option key={index} value={index}>{item.category}</option>
-                                        ))
-                                    }
+                                    {options.map((item, index) =>
+                                        <option name="category" value={item.category} key={index}>
+                                            {item.category}
+                                        </option>
+                                    )}
                                 </Select>
+                                {
+                                    validateCategory ? false : <Validator2>Asigne un categoría al platillo.</Validator2>
+                                }
                                 {
                                     formik.errors.category && formik.touched.category &&
                                     (<Validator>{formik.errors.category}</Validator>)
-                                }
-                                {
-                                    validateCategory ? false : <Validator2>Asigne un categoría al platillo.</Validator2>
                                 }
                                 <Input
                                     name="price"
@@ -132,20 +162,17 @@ const AddDish = () => {
                             </InputsSection>
                             <Divider />
                             <UploadSection>
-                                <UploadImage
-                                    onImageLoaded={file => formik.setFieldValue("file", file)} />
-                                {formik.errors.image && formik.touched.image && (
-                                    <Message text={formik.errors.image}></Message>
-                                )}
+                                <input
+                                    type="file"
+                                    onChange={(e) => formik.setFieldValue("file", e.target.files[0])}
+                                />
                             </UploadSection>
                         </WrapperFormData>
                         <Button type="submit">Guardar platillo</Button>
-                        {/* <button type="submit">Submit</button> */}
                     </Form>
                 </ContainerForm>
             </Wrapper>
         </Layout>
-
     );
 };
 
@@ -269,7 +296,69 @@ const Validator2 = styled.p`
     text-align: start!important;
     color: red;
     font-size: 10pt!important;
-    margin: -41px 0 25px 15px!important;
+    margin: -30px 0 25px 15px!important;
+    position: absolute;
+`;
+
+//para la imagen
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+`;
+
+const ImgPreview = styled.div`
+    width: 200px;
+    height: 200px;
+`;
+
+const UploadClick = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px dashed #dadce0;
+    width: 200px;
+    height: 200px;
+    cursor: pointer;
+    background: ${color.white};
+
+    &:hover{
+        border: 2px dashed #70a3e6;
+    }
+
+    span{
+        border: none;
+        color: ${color.black};
+        user-select: none;
+    }
+
+    input{
+        display: none;
+    }
+`;
+
+const IconFileUpload = styled(FiUpload)`
+    font-size: 23px;
+    margin-bottom: 10px;
+`;
+
+const Image = styled.img`
+    object-fit: contain;
+    border: 2px dashed #9a9898;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    top:0;
+    pointer-events: none;
+`;
+
+const Required = styled.p`
+    margin: 33px 0px 0px 0px!important;
+    font-size: ${fontSize.fontFooter}!important;
 `;
 
 export default AddDish;
