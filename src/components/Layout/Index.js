@@ -31,7 +31,7 @@ const Index = ({ children }) => {
                             <AiFillSetting />
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Button to="/gestion-platillos">Gestión de platillos</Button>
+                            <Buttons to="/gestion-platillos" style={{color: '#fff'}}>Gestión de platillos</Buttons>
                         </span>
                     </Link>
 
@@ -40,18 +40,18 @@ const Index = ({ children }) => {
                             <IoFastFoodSharp />
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Button to="/nuevo-platillo">Alta de platillo</Button>
+                            <Buttons to="/nuevo-platillo" style={{color: '#fff'}}>Alta de platillo</Buttons>
                         </span>
                     </Link>
 
-                    <div className={clickIcon ? "btn-container" : "btn-container-none"} title="Cerrar sesión">
-                        <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"}>
+                    <Link className={clickIcon ? "btn-container" : "btn-container-none"} title="Cerrar sesión">
+                        <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"} style={{marginTop: '5px'}}>
                             <IoExit />
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Button>Cerrar sesión</Button>
+                            <Buttons style={{color: '#fff'}}>Cerrar sesión</Buttons>
                         </span>
-                    </div>
+                    </Link>
                 </aside>
                 <main className={clickIcon ? "main show-Main" : "main hide-Main"}>
                     {children}
@@ -90,17 +90,17 @@ const Wrapper = styled.div`
         grid-area: header;
         position: fixed;
         top: 0;
-        height: 20px;
+        height: 50px;
         right: 0;
         padding: 15px;
 
     }
         .hide-Header{
-            width: calc(100% - 80px);
+            width: calc(100% - 50px);
         }
 
         .show-Header{
-            width: calc(100% - 280px);
+            width: calc(100% - 247px);
         }
 
     .aside{
@@ -118,11 +118,11 @@ const Wrapper = styled.div`
 
     }
         .hide-Aside{
-            width: 20px;
+            width: 50px;
         }
 
         .show-Aside{
-            width: 220px;
+            width: 247px;
         }
 
     /* aside buttons hide */
@@ -166,8 +166,11 @@ const Wrapper = styled.div`
         }
 
         .wrapper-link{
-            text-decoration: none;
+            text-decoration: none;   
         }
+        .wrapper-link:hover{
+                color: #fff;
+            }
 
         .wrapper-link-none{
             display: none;
@@ -196,7 +199,7 @@ const BtnMenuClick = styled.span`
     cursor: pointer;
 `;
 
-const Button = styled(Link)`
+const Buttons = styled(Link)`
     text-decoration: none;
     color: ${color.white};
     font-size: ${fontSize.fontFooter};

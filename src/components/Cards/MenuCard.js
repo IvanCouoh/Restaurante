@@ -45,7 +45,7 @@ const Card = styled.div`
     border-radius:7px;
     padding: 7px;
     width: 350px;
-    height: 140px;
+    height: 155px;
     margin: 15px;
     display: flex;
     flex-direction: row;
@@ -55,6 +55,10 @@ const Card = styled.div`
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
+    p:nth-child(2){
+        margin-bottom: 5px;
+    }
 
     @media(max-width: 450px){
         &{

@@ -88,8 +88,8 @@ const Wrapper = styled.div`
         position: absolute;
         top: 0;
         left: 0;
-        width: 310px;
-        height: 5px;
+        width: 100%;
+        height: 40px;
         font-size: ${fontSize.fontFooter};
         font-family: 'Montserrat', sans-serif;
         border: 1px solid #DADCE0;
@@ -140,17 +140,25 @@ const Wrapper = styled.div`
 
     /* textarea */
     .textarea {
-        min-height: 60px;
-        max-height: 60px;
-        min-width: 310px;
-        max-width: 310px;
+        min-height: 93px;
+        max-height: 93px;
+        min-width: 100%;
+        max-width: 100%;
+    }
+    
+    @media(max-width: 845px){
+      .input, .textarea{
+            width: 262px;
+            min-width: 262px;
+            max-width: 262px;
+        }
     }
     
     @media(max-width: 490px){
         .input, .textarea{
-            width: 209px;
-            min-width: 209px;
-            max-width: 209px;
+            width: 160px;
+            min-width: 160px;
+            max-width: 160px;
         }
 
         .div{

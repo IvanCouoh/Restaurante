@@ -9,12 +9,21 @@ import * as yup from 'yup';
 import Message from '../components/ValidationInputs/Index';
 import { db, storage } from '../firebase/initBD';
 import { FiUpload } from "react-icons/fi";
+import { message } from 'antd';
 
 const AddDish = () => {
 
     const [options, setOptions] = useState([])
     const [idCategory, setIdCategory] = useState(-1);
     const [validateCategory, setValidateCategory] = useState(true);
+    const key = 'updatable';
+
+    const openMessage = () => {
+        message.loading({ content: 'Guardando...', key });
+        setTimeout(() => {
+            message.success({ content: 'El platillo a sedo guardado.', key, duration: 2 });
+        }, 1000);
+    };
 
     const indexCategory = (e) => {
         const indexOption = e.target.value;
@@ -78,9 +87,11 @@ const AddDish = () => {
                             price,
                             description,
                             category,
-                            imageURL
+                            imageURL,
+                            disponible: true,
                         }).then(res => {
                             console.log("EXITOSO");
+                            openMessage();
                         }).catch(error => {
                             console.error("ERROR", error)
                         })

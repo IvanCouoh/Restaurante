@@ -40,6 +40,7 @@ const ItemPlate = styled.div`
     border-top: 1px solid rgba(0,0,0,.07);
     margin-top: 15px;
     margin-bottom: 4px;
+    font-size: ${fontSize.fontText};
 `;
 
 const ItemContainer = styled.div`

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout/Index';
 import styled from 'styled-components';
 import { db } from '../firebase/initBD';
-import { MdModeEdit, MdSearch, MdFilterList } from "react-icons/md";
+import { MdModeEdit, MdSearch, MdFilterList, MdDelete } from "react-icons/md";
 
 const MenuAdmin = () => {
 
@@ -10,12 +10,13 @@ const MenuAdmin = () => {
     const [showHide, setShowHide] = useState(false);
 
     useEffect(() => {
-        const getPlatillos = db.collection('prueba').get()
-        getPlatillos.then(function (snapshot) {
-            snapshot.forEach(function (doc) {
-                setPlatillos(platillo => [...platillo, doc.data()])
+        const getPlatillos = db.collection('prueba')
+            .onSnapshot(function (querySnapshot) {
+                const docs = [];
+                querySnapshot.forEach(function (doc) {
+                    setPlatillos(platillo => [...platillo, doc.data()])
+                })
             })
-        })
     }, [])
 
     const changeState = () => {
@@ -42,7 +43,7 @@ const MenuAdmin = () => {
                             showHide ? (
                                 <>
                                     <div>
-                                        <input type="checkbox" /><spa>Disponibles</spa>
+                                        <input type="checkbox" /><span>Disponibles</span>
                                     </div>
                                     <div>
                                         <input type="checkbox" /><span>Agotados</span>
@@ -72,7 +73,8 @@ const MenuAdmin = () => {
                                 <p>{item.description}</p>
                                 <p>{item.disponible ? 'Disponible' : 'Agotado'}</p>
                                 <DivImg>
-                                    <button>Editar <span style={{ marginLeft: '5px' }} ></span> <IConEdit /></button>
+                                    <button className="edit"> <span style={{ marginLeft: '5px' }} >Editar</span> <IConEdit /></button>
+                                    <button className="delete"> <span style={{ marginLeft: '5px' }} >Eliminar</span> <MdDelete /></button>
                                 </DivImg>
                             </>
                         ))}
@@ -130,20 +132,30 @@ const Datos = styled.div`
 const DivImg = styled.div`
     border: 1px solid #e4e4e4;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 
     button{
         display: flex;
+        justify-content: center;
         align-items: center;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 10px;
-        cursor: pointer;
-        outline: none;
-        background-color: #ffc00f;
+        width: 100px;
+        margin: 10px 0;
         color: #fff;
-        font-size: 11pt;
+        border: none;
+        border-radius: 10px;
+        outline: none;
+        height: 35px;
+        cursor: pointer;
+    }
+
+    .edit{
+        background-color: #ffc00f;
+    }
+
+    .delete{
+        background-color: #ce1414;
     }
 `;
 
@@ -159,23 +171,25 @@ const Search = styled.div`
 
 const IconSearch = styled(MdSearch)`
     background-color: #fff;
+    color: #000;
     border-radius: 1px 15px 15px 1px;
     border: 1px solid #ececec;
     border-left: none;
-    height: 20px;
-    padding: 15px 15px;
+    height: 50px;
+    padding: 13px 13px;
     font-size: 22px;
+    width: 50px;
 `;
 
 const InputShearch = styled.input`
     border-radius: 15px 1px 1px 15px;
     border: 1px solid #ececec;
     border-right: none;
-    padding: 15px 15px;
+    padding: 15px 0px 15px 15px;
     outline: none;
-    height: 20px;
+    height: 50px;
     font-size: 12pt;
-    width: 250px;
+    width: 350px;
 `;
 
 const BtnFilter = styled.button`
@@ -208,6 +222,10 @@ const SecctionFilter = styled.div`
 
     div:nth-child(2){
         margin: 0 15px;
+    }
+    
+    input{
+        margin-right: 8px;
     }
 `;
 

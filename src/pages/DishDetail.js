@@ -36,6 +36,7 @@ const DishDetail = () => {
                     <p>Total a pagar: <span>$580.00 </span></p>
                 </AlightItems>
                 <hr />
+                <JEJE />
                 <BtnRed text="Añadir a la lista"></BtnRed>
             </ContainerDetail>
         </>
@@ -54,7 +55,7 @@ const Img = styled.img`
 
 const Name = styled.div`
     position: absolute;
-    bottom: 4px;
+    bottom: 0px;
     width: 100%;
     margin: 0;
     padding: 1px 0;
@@ -70,8 +71,9 @@ const Name = styled.div`
 `;
 
 const ContainerDetail = styled.div`
-    margin: 0 15px 80px 15px;
-
+    margin: 5px 15px 80px 15px;
+    font-size: ${fontSize.fontText};
+    
     @media(min-width: 810px){
         margin: 0 20% 80px 20%;
     }
@@ -91,6 +93,10 @@ const AlightItems = styled.div`
     span{
         display: flex;
     }
+`;
+
+const JEJE = styled.div`
+    height: 90px;
 `;
 
 export default DishDetail;

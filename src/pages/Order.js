@@ -45,6 +45,7 @@ const TotalToPay = styled.div`
     width: 100%;
 
     p{
+        font-size: ${fontSize.fontText};
         font-weight: 600;
         margin-right: 15px;
         margin-left: 15px;
