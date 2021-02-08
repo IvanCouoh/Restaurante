@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoFastFoodSharp } from "react-icons/io5";
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize } from '../../theme/theme';
 import { Link } from 'react-router-dom';
 
 const Header = ({ linkLeft, linkRight, textLeft, textRight, icon }) => {
@@ -23,7 +22,7 @@ const Wrapper = styled.header`
     height: auto;
     background-color: ${color.primaryColor};
     color: ${color.whiteoscuro};
-    font-size: ${fontSize.fontTitle};
+    font-size: ${fontSize.fontMedium};
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,7 +36,7 @@ const Wrapper = styled.header`
     .link{
         display: flex;
         text-decoration: none;
-        font-size: ${fontSize.fontText};
+        font-size: ${fontSize.fontMedium};
         color: ${color.white};
         align-items: center;
         margin: 7px 15px;

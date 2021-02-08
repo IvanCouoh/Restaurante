@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Textarea } from '../components/Input/Index';
 import styled from 'styled-components';
-import { fontSize } from '../theme/theme';
-import { color } from '../theme/theme';
+import { color, fontSize } from '../theme/theme';
 import Layout from "../components/Layout/Index";
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -208,7 +207,7 @@ const ContainerForm = styled.div`
     p{
         margin: -10px 0 20px 0;
         text-align: center;
-        font-size: ${fontSize.fontTitle};
+        font-size: ${fontSize.fontBigger};
     }
 
     @media(max-width: 845px){
@@ -270,7 +269,7 @@ const Button = styled.button`
     width: 100%;
     color: ${color.white};
     background: ${color.primaryColor};
-    font-size: ${fontSize.fontText};
+    font-size: ${fontSize.fontMedium};
     border: none;
     border-radius: 10px;
     outline: none;
@@ -285,7 +284,7 @@ const Select = styled.select`
     padding: 0 10px;
     outline: none;
     cursor: pointer;
-    font-size: ${fontSize.fontFooter};
+    font-size: ${fontSize.fontSmall};
     font-family: 'Montserrat',sans-serif;
     border: 1px solid #dadce0;
     border-radius: 5px;
@@ -369,7 +368,7 @@ const Image = styled.img`
 
 const Required = styled.p`
     margin: 33px 0px 0px 0px!important;
-    font-size: ${fontSize.fontFooter}!important;
+    font-size: ${fontSize.fontSmall}!important;
 `;
 
 export default AddDish;

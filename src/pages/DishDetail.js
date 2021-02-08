@@ -4,8 +4,7 @@ import styled from 'styled-components';
 import img1 from '../assets/images/img1-galery.jpg';
 import BtnMasMenos from '../components/Buttons/MoreLessButtons';
 import BtnRed from '../components/Buttons/RedButton';
-import { color } from '../theme/theme';
-import { fontSize } from '../theme/theme';
+import { color, fontSize } from '../theme/theme';
 import { IoFastFoodSharp } from "react-icons/io5";
 
 const DishDetail = () => {
@@ -63,7 +62,7 @@ const Name = styled.div`
     height: auto;
     text-align: center;
     color: ${color.white};
-    font-size: ${fontSize.fontSubTile};
+    font-size: ${fontSize.fontBig};
 
     p{
         margin: 5px 0;
@@ -72,7 +71,7 @@ const Name = styled.div`
 
 const ContainerDetail = styled.div`
     margin: 5px 15px 80px 15px;
-    font-size: ${fontSize.fontText};
+    font-size: ${fontSize.fontMedium};
     
     @media(min-width: 810px){
         margin: 0 20% 80px 20%;

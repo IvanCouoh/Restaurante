@@ -43,7 +43,7 @@ export const arrayDishes = [
         img: img1,
         name: "Platillo 1",
         price: 45,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        description: "Lorem ipsum",
     },
     {
         img: img2,
@@ -55,7 +55,7 @@ export const arrayDishes = [
         img: img3,
         name: "Platillo 3",
         price: 97,
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.doloLorem ipsum dolor sit amet consectetur adipisicing elit.",
     },
     {
         img: img1,

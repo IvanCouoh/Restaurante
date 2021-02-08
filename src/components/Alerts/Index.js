@@ -4,7 +4,7 @@ import { TiDelete } from "react-icons/ti";
 import { RiCheckboxCircleFill } from "react-icons/ri";
 import Bounce from 'react-reveal/Bounce';
 import HeadShake from 'react-reveal/HeadShake';
-import {color, fontSize} from '../../theme/theme';
+import {color} from '../../theme/theme';
 
 export const Error = ({ message }) => {
     return (

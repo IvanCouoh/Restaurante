@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize, fontFamily } from '../../theme/theme';
 import { arrayCategories } from '../../components/Arrays/Arrays';
 
 const TabButton = () => {
@@ -31,7 +30,8 @@ const WrapperHeader = styled.header`
     button{
         background-color: ${color.primaryColor};
         color: ${color.white};
-        font-size: ${fontSize.fontText};
+        font-size: ${fontSize.fontMedium};
+        font-family: ${fontFamily.estandar};
         margin: 0 15px;
         border-radius: 25px;
         border: 1.5px solid ${color.white};

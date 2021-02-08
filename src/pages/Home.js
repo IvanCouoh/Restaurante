@@ -5,8 +5,7 @@ import logo from '../assets/images/logo.png';
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { BsChevronCompactDown } from 'react-icons/bs';
 import { Link } from "react-router-dom";
-import { color } from '../theme/theme';
-import { fontSize } from '../theme/theme';
+import { color, fontSize, fontFamily } from '../theme/theme';
 import Fade from 'react-reveal/Fade';
 import GoToMenu from '../containers/GoToMenu/Index';
 import Footter from '../components/Footer/Index';
@@ -132,7 +131,7 @@ const WrapperHeader = styled.header`
     }
 
     a{
-        font-size: ${fontSize.fontText};
+        font-size: ${fontSize.fontMedium};
         font-weight: 500;
         margin: 0 25px;
         display: flex;
@@ -178,6 +177,7 @@ const Hamburguesa = styled.span`
 
 const ScrollDown = styled.div`
     color: ${color.whiteoscuro};
+    font-family: ${fontFamily.estandar};
     font-size: 65px;
     display: flex;
     flex-direction: column;
@@ -197,7 +197,7 @@ const ScrollDown = styled.div`
 
     p{
         padding: 0 20%;
-        font-size: ${fontSize.fontSubTile};
+        font-size: ${fontSize.fontBig};
         font-weight: 500;
         text-shadow: 1px 1px 1px #aaa;
         margin: 5px 0 40px 0;

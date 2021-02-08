@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { arrayDishes } from '../../components/Arrays/Arrays';
-import { fontSize } from '../../theme/theme';
-import { color } from '../../theme/theme';
+import { color, fontSize, fontFamily } from '../../theme/theme';
 import { Link } from 'react-router-dom';
 
 const MenuCard = () => {
@@ -55,6 +54,8 @@ const Card = styled.div`
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    font-size: ${fontSize.fontMedium};
+    font-family: ${fontFamily.estandar};
 
     p:nth-child(2){
         margin-bottom: 5px;
@@ -65,7 +66,7 @@ const Card = styled.div`
             display: flex;
             flex-direction: column;
             width: 350px;
-            height: 275px;
+            height: auto;
         }
 
         p:first-child{
@@ -94,7 +95,7 @@ const Img = styled.img`
 
 const NameDescr = styled.div`
     margin-left: 10px;
-    font-size: ${fontSize.fontText};
+    font-size: ${fontSize.fontMedium};
 
     p{
         display: -webkit-box;

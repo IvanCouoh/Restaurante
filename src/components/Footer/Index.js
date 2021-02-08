@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize } from '../../theme/theme';
 
 const Index = () => {
     return (
@@ -23,7 +22,7 @@ const Footer = styled.footer`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: ${fontSize.fontFooter};
+    font-size: ${fontSize.fontSmall};
 
     p{
         text-align: center;

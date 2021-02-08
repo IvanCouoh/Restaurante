@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import '../../App.css';
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize } from '../../theme/theme';
 import GoToMenuImg from '../../assets/images/LogoAlaOrd.png';
 import LinkButtom from '../../components/Buttons/WhiteButton';
 
@@ -47,7 +46,7 @@ const GoToMenu = styled.div`
     p{
         text-align: center;
         color: ${color.white};
-        font-size: ${fontSize.fontText};
+        font-size: ${fontSize.fontMedium};
     }
 
     @media(max-width: 1080px){

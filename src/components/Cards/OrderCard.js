@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import Img1 from '../../assets/images/img2-galery.jpg';
 import BtnMasMenos from '../../components/Buttons/MoreLessButtons';
 import BtnWhite from '../../components/Buttons/WhiteButton';
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize } from '../../theme/theme';
 import { arrayListOrder } from "../../components/Arrays/Arrays";
 
 const OrderCard = () => {
@@ -20,7 +19,7 @@ const OrderCard = () => {
                                 <OrderData>
                                     <Quantity>
                                         <p>Cantidad</p>
-                                        <p><span><BtnMasMenos text="-"/><p>{item.cantidad}</p><BtnMasMenos text="+"/></span></p>
+                                        <p><span><BtnMasMenos text="-" /><p>{item.cantidad}</p><BtnMasMenos text="+" /></span></p>
                                     </Quantity>
                                     <p>${item.price}.00</p>
                                 </OrderData>
@@ -40,7 +39,7 @@ const ItemPlate = styled.div`
     border-top: 1px solid rgba(0,0,0,.07);
     margin-top: 15px;
     margin-bottom: 4px;
-    font-size: ${fontSize.fontText};
+    font-size: ${fontSize.fontMedium};
 `;
 
 const ItemContainer = styled.div`
@@ -93,7 +92,7 @@ const Remove = styled.div`
         text-align: center;
         color: ${color.primaryColor};
         background: ${color.white};
-        font-size: ${fontSize.fontText};
+        font-size: ${fontSize.fontMedium};
         border: 1px solid ${color.primaryColor};
         border-radius: 10px;
         outline: none;

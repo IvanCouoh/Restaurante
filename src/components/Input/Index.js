@@ -90,7 +90,7 @@ const Wrapper = styled.div`
         left: 0;
         width: 100%;
         height: 40px;
-        font-size: ${fontSize.fontFooter};
+        font-size: ${fontSize.fontMedium};
         font-family: 'Montserrat', sans-serif;
         border: 1px solid #DADCE0;
         border-radius: 5px;

@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { arrayMenu } from '../../components/Arrays/Arrays';
 import { CgMathPlus } from "react-icons/cg";
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize, fontFamily } from '../../theme/theme';
 
 const CarouselCards = () => {
     return (
@@ -60,7 +59,8 @@ const Espacio = styled.div`
 
 const SubTitleFavorite = styled.h1`
     text-align: center;
-    font-size: ${fontSize.fontTitle};
+    font-size: ${fontSize.fontBigger};
+    font-family: ${fontFamily.estandar};
     margin: 40px 0;
 `;
 
@@ -80,7 +80,8 @@ const Galery = styled.div`
     p{
         width: 150px;
         text-align: center;
-        font-size: ${fontSize.fontText};
+        font-size: ${fontSize.fontMedium};
+        font-family: ${fontFamily.estandar};
     }
 `;
 

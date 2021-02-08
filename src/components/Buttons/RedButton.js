@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize, fontFamily} from '../../theme/theme';
 
 const RedButton = ({text}) => {
     return (
@@ -15,7 +14,8 @@ const BtnRed = styled.button`
     height: 60px;
     background: ${color.primaryColor};
     color: ${color.white};
-    font-size: ${fontSize.fontText};
+    font-size: ${fontSize.fontMedium};
+    font-family: ${fontFamily.estandar};
     border: none;
     outline: none;
     width: 100%;

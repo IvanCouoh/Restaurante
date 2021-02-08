@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import { IoFastFoodSharp } from "react-icons/io5";
 import { AiFillSetting } from "react-icons/ai";
 import { IoExit } from "react-icons/io5";
-import { color } from '../../theme/theme';
-import { fontSize } from '../../theme/theme';
+import { color, fontSize } from '../../theme/theme';
 
 const Index = ({ children }) => {
 
@@ -31,7 +30,7 @@ const Index = ({ children }) => {
                             <AiFillSetting />
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Buttons to="/gestion-platillos" style={{color: '#fff'}}>Gestión de platillos</Buttons>
+                            <Buttons to="/gestion-platillos" style={{ color: '#fff' }}>Gestión de platillos</Buttons>
                         </span>
                     </Link>
 
@@ -40,16 +39,16 @@ const Index = ({ children }) => {
                             <IoFastFoodSharp />
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Buttons to="/nuevo-platillo" style={{color: '#fff'}}>Alta de platillo</Buttons>
+                            <Buttons to="/nuevo-platillo" style={{ color: '#fff' }}>Alta de platillo</Buttons>
                         </span>
                     </Link>
 
                     <Link className={clickIcon ? "btn-container" : "btn-container-none"} title="Cerrar sesión">
-                        <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"} style={{marginTop: '5px'}}>
+                        <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"} style={{ marginTop: '5px' }}>
                             <IoExit />
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
-                            <Buttons style={{color: '#fff'}}>Cerrar sesión</Buttons>
+                            <Buttons style={{ color: '#fff' }}>Cerrar sesión</Buttons>
                         </span>
                     </Link>
                 </aside>
@@ -157,12 +156,12 @@ const Wrapper = styled.div`
     }
         .wrapper-icon{
             margin: 0 10px;
-            font-size: ${fontSize.fontIconsGR};
+            font-size: ${fontSize.fontExBigger};
         }
 
         .wrapper-icon-none{
             margin: 0 10px;
-            font-size: ${fontSize.fontIconsGR};
+            font-size: ${fontSize.fontExBigger};
         }
 
         .wrapper-link{
@@ -194,7 +193,7 @@ const BtnMenuClick = styled.span`
     display: flex;
     flex-direction: column;
     margin-right: 15px;
-    font-size: ${fontSize.fontIconMenu};
+    font-size: ${fontSize.fontGigantic};
     z-index: 300;
     cursor: pointer;
 `;
@@ -202,7 +201,7 @@ const BtnMenuClick = styled.span`
 const Buttons = styled(Link)`
     text-decoration: none;
     color: ${color.white};
-    font-size: ${fontSize.fontFooter};
+    font-size: ${fontSize.fontSmall};
 `;
 
 export default Index;

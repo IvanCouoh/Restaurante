@@ -3,11 +3,22 @@ import Layout from '../components/Layout/Index';
 import styled from 'styled-components';
 import { db } from '../firebase/initBD';
 import { MdModeEdit, MdSearch, MdFilterList, MdDelete } from "react-icons/md";
+import { fontSize } from '../theme/theme';
 
 const MenuAdmin = () => {
 
     const [platillos, setPlatillos] = useState([]);
     const [showHide, setShowHide] = useState(false);
+    const [id, setId] = useState('');
+
+    const deletePlato = (index) => {
+        // db.collection('prueba').doc().delete()
+        console.log('Eliminado', index);
+    }
+
+    const editarPlato = (item) => {
+        console.log('=>', item);
+    }
 
     useEffect(() => {
         const getPlatillos = db.collection('prueba')
@@ -62,7 +73,7 @@ const MenuAdmin = () => {
                         <Cabecera>Descripción</Cabecera>
                         <Cabecera>Disponible/Agotado</Cabecera>
                         <Cabecera style={{ borderRadius: '0px 7px 0px 0px' }}>Editar</Cabecera>
-                        {platillos.map(item => (
+                        {platillos.map((item, index) => (
                             <>
                                 <DivImg>
                                     <img src={item.imageURL} />
@@ -73,8 +84,8 @@ const MenuAdmin = () => {
                                 <p>{item.description}</p>
                                 <p>{item.disponible ? 'Disponible' : 'Agotado'}</p>
                                 <DivImg>
-                                    <button className="edit"> <span style={{ marginLeft: '5px' }} >Editar</span> <IConEdit /></button>
-                                    <button className="delete"> <span style={{ marginLeft: '5px' }} >Eliminar</span> <MdDelete /></button>
+                                    <button onClick={() => editarPlato(item)} className="edit"><span style={{ marginRight: '5px', marginLeft: '5px' }} >Editar</span> <IConEdit /></button>
+                                    <button onClick={() => deletePlato(item.index)} className="delete"><span style={{ marginRight: '5px', marginLeft: '5px' }} >Eliminar</span> <IConDelete /></button>
                                 </DivImg>
                             </>
                         ))}
@@ -160,7 +171,11 @@ const DivImg = styled.div`
 `;
 
 const IConEdit = styled(MdModeEdit)`
-    font-size: 20px;
+    font-size: ${fontSize.fontExBigger};
+`;
+
+const IConDelete = styled(MdDelete)`
+    font-size: ${fontSize.fontExBigger};
 `;
 
 const Search = styled.div`
@@ -177,7 +192,7 @@ const IconSearch = styled(MdSearch)`
     border-left: none;
     height: 50px;
     padding: 13px 13px;
-    font-size: 22px;
+    font-size: ${fontSize.fontExBigger};
     width: 50px;
 `;
 
@@ -188,7 +203,7 @@ const InputShearch = styled.input`
     padding: 15px 0px 15px 15px;
     outline: none;
     height: 50px;
-    font-size: 12pt;
+    font-size: ${fontSize.fontMedium};
     width: 350px;
 `;
 
@@ -203,7 +218,7 @@ const BtnFilter = styled.button`
     outline: none;
     background-color: #fff;
     color: #000;
-    font-size: 12pt;
+    font-size: ${fontSize.fontMedium};
 
     &:hover{
         background-color: #001529;
@@ -212,7 +227,7 @@ const BtnFilter = styled.button`
 `;
 
 const IconFilter = styled(MdFilterList)`
-    font-size: 20px;
+    font-size: ${fontSize.fontExBigger};
     margin-bottom: 1px;
 `;
 

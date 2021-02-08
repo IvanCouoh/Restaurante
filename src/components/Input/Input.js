@@ -90,7 +90,7 @@ const Wrapper = styled.div`
         left: 0;
         width: 310px;
         height: 5px;
-        font-size: ${fontSize.fontFooter};
+        font-size: ${fontSize.fontSmall};
         border: 1px solid #DADCE0;
         border-radius: 5px;
         outline: none;
