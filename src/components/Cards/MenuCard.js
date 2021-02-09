@@ -30,7 +30,7 @@ const MenuCard = () => {
                         <p>${item.price}.00</p>
                         <p>{item.description}</p>
                     </NameDescr>
-                    <Link to="/detalle" className="link">Ver platillo</Link>
+                    <Link to={`/detalle/${item.name}`} className="link">Ver platillo</Link>
                 </Card>
             ))}
         </Wrapper>

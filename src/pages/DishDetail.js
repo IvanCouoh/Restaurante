@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import HeaderMenu from '../components/Headers/RedHeader';
 import styled from 'styled-components';
 import img1 from '../assets/images/img1-galery.jpg';
@@ -6,38 +6,60 @@ import BtnMasMenos from '../components/Buttons/MoreLessButtons';
 import BtnRed from '../components/Buttons/RedButton';
 import { color, fontSize } from '../theme/theme';
 import { IoFastFoodSharp } from "react-icons/io5";
+import { useParams } from 'react-router-dom';
+import { db } from '../firebase/initBD';
 
 const DishDetail = () => {
+    const { name } = useParams();
+
+    const [detalle, setDetalle] = useState([]);
+
+    useEffect(() => {
+        const getPlatillos = db.collection('prueba')
+            .onSnapshot(function (querySnapshot) {
+                const list = [];
+                querySnapshot.forEach(function (doc) {
+                    list.push({ ...doc.data(), id: doc.id });
+                })
+                setDetalle(list);
+            })
+    }, [])
     return (
         <>
             <HeaderMenu linkLeft="/menu" textLeft="Menú" linkRight="/mi-orden" textRight="Ver mi orden" icon={<IoFastFoodSharp />} />
-            <Wrapper>
-                <Img src={img1} alt="platillo" />
-                <Name>
-                    <p>
-                        Platillo
-                    </p>
-                </Name>
-            </Wrapper>
-            <ContainerDetail>
-                <p>Espacio para mostrar toda la descripción del platillo...
-                Espacio para mostrar toda la descripción del platillo...
-                </p>
-                <p>$120.00</p>
-                <hr />
-                <AlightItems>
-                    <p>Cantidad: <span><BtnMasMenos text="-" /><p>10</p><BtnMasMenos text="+" /></span></p>
-                </AlightItems>
-                <AlightItems>
-                    <p>Total del platillo: <span>$240.00 </span></p>
-                </AlightItems>
-                <AlightItems>
-                    <p>Total a pagar: <span>$580.00 </span></p>
-                </AlightItems>
-                <hr />
-                <JEJE />
-                <BtnRed text="Añadir a la lista"></BtnRed>
-            </ContainerDetail>
+            {detalle.filter(detail => detail.name === name).map((detail, index) => (
+                <>
+                    <Wrapper>
+                        <Img src={detail.imageURL} alt={detail.imageURL} />
+                        <Name>
+                            <p>
+                                {detail.name}
+                            </p>
+                        </Name>
+                    </Wrapper>
+                    <ContainerDetail>
+                        {/* <p>ID:{match.params.id}</p> */}
+                        <p>{detail.description}</p>
+                        
+                        <p>${detail.price}.00</p>
+                        <hr />
+                        <AlightItems>
+                            <p>Cantidad: <span><BtnMasMenos text="-" /><p>10</p><BtnMasMenos text="+" /></span></p>
+                        </AlightItems>
+                        <AlightItems>
+                            <p>Total del platillo: <span>$240.00 </span></p>
+                        </AlightItems>
+                        <AlightItems>
+                            <p>Total a pagar: <span>$580.00 </span></p>
+                        </AlightItems>
+                        <hr />
+                        <JEJE />
+                        <BtnRed text="Añadir a la lista"></BtnRed>
+                    </ContainerDetail>
+                </>
+            ))}
+
+
         </>
     );
 };

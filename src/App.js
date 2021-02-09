@@ -36,7 +36,7 @@ function App() {
         <Route path="/admin" component={Admin}></Route>
         <Route path="/nuevo-platillo" component={AddDish}></Route>
         <Route path="/menu" component={Menu}></Route>
-        <Route path="/detalle" component={Details}></Route>
+        <Route path="/detalle/:name" component={Details}></Route>
         <Route path="/mi-orden" component={ViewOrder}></Route>
         <Route path="/" component={Home}></Route>
       </Switch>
