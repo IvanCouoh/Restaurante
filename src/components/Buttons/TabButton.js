@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { color, fontSize, fontFamily } from '../../theme/theme';
 import { arrayCategories } from '../../components/Arrays/Arrays';
+import { db } from '../../firebase/initBD';
 
 const TabButton = () => {
+
+    const [lista, setLista] = useState([]);
+
+    const getListado = async () => {
+        db.collection("categories").onSnapshot((querySnapshot) => {
+            const docs = [];
+            querySnapshot.forEach((doc) => {
+                docs.push({ ...doc.data(), id: doc.id });
+            })
+            setLista(docs);
+        })
+    }
+
+    useEffect(() => {
+        getListado()
+    }, [])
+
     return (
         <WrapperHeader>
             {
-                arrayCategories.map((item, index) => (
+                lista.map((item, index) => (
                     <button key={index}>{item.category}</button>
                 ))
             }

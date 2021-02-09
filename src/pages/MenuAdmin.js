@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { db } from '../firebase/initBD';
 import { MdModeEdit, MdSearch, MdFilterList, MdDelete } from "react-icons/md";
 import { fontSize } from '../theme/theme';
+import { message } from 'antd';
 
 const MenuAdmin = () => {
 
@@ -11,9 +12,16 @@ const MenuAdmin = () => {
     const [showHide, setShowHide] = useState(false);
     const [id, setId] = useState('');
 
-    const deletePlato = (index) => {
-        // db.collection('prueba').doc().delete()
-        console.log('Eliminado', index);
+    const key = 'updatable';
+
+    const openMessageDelete = () => {
+        message.success({ content: 'Categoría eliminada.', key, duration: 2 });
+    };
+
+    const deletePlato = (id) => {
+        db.collection('prueba').doc(id).delete()
+        console.log('Eliminado', id);
+        openMessageDelete();
     }
 
     const editarPlato = (item) => {
@@ -25,8 +33,9 @@ const MenuAdmin = () => {
             .onSnapshot(function (querySnapshot) {
                 const docs = [];
                 querySnapshot.forEach(function (doc) {
-                    setPlatillos(platillo => [...platillo, doc.data()])
+                    docs.push({ ...doc.data(), id: doc.id });
                 })
+                setPlatillos(docs);
             })
     }, [])
 
@@ -73,22 +82,40 @@ const MenuAdmin = () => {
                         <Cabecera>Descripción</Cabecera>
                         <Cabecera>Disponible/Agotado</Cabecera>
                         <Cabecera style={{ borderRadius: '0px 7px 0px 0px' }}>Editar</Cabecera>
-                        {platillos.map((item, index) => (
-                            <>
-                                <DivImg>
-                                    <img src={item.imageURL} />
-                                </DivImg>
-                                <p>{item.name}</p>
-                                <p>${item.price}.00</p>
-                                <p>{item.category}</p>
-                                <p>{item.description}</p>
-                                <p>{item.disponible ? 'Disponible' : 'Agotado'}</p>
-                                <DivImg>
-                                    <button onClick={() => editarPlato(item)} className="edit"><span style={{ marginRight: '5px', marginLeft: '5px' }} >Editar</span> <IConEdit /></button>
-                                    <button onClick={() => deletePlato(item.index)} className="delete"><span style={{ marginRight: '5px', marginLeft: '5px' }} >Eliminar</span> <IConDelete /></button>
-                                </DivImg>
-                            </>
-                        ))}
+                        {
+                            platillos.length === 0 ? (<Empity><p>No se ha agregado ningún platillo.</p></Empity>) :
+
+                                platillos.map((item) => (
+                                    <>
+                                        <DivImg>
+                                            <img src={item.imageURL} />
+                                        </DivImg>
+                                        <p>{item.name}</p>
+                                        <p>${item.price}.00</p>
+                                        <p>{item.category}</p>
+                                        <p>{item.description}</p>
+                                        <p>{item.disponible ? 'Disponible' : 'Agotado'}</p>
+                                        <DivImg>
+                                            <button
+                                                onClick={() => editarPlato(item)}
+                                                className="edit"
+                                            >
+                                                <span style={{ marginRight: '5px', marginLeft: '5px' }} >
+                                                    Editar
+                                             </span>
+                                                <IConEdit />
+                                            </button>
+                                            <button
+                                                onClick={() => deletePlato(item.id)}
+                                                className="delete">
+                                                <span style={{ marginRight: '5px', marginLeft: '5px' }} >
+                                                    Eliminar
+                                             </span>
+                                                <IConDelete />
+                                            </button>
+                                        </DivImg>
+                                    </>
+                                ))}
 
                     </Tabla>
                 </EnElMenu>
@@ -133,6 +160,20 @@ const Cabecera = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+`;
+
+const Empity = styled.div`
+    p{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        left: 0;
+        right: 0;
+        border: none;
+        font-size: ${fontSize.fontMedium};
+    }
 `;
 
 const Datos = styled.div`

@@ -7,6 +7,7 @@ import AddDish from './pages/AddDish';
 import Admin from './pages/IndexAdmin';
 import Test from './pages/Test';
 import GestionPlatillos from './pages/MenuAdmin';
+import AddCategory from './pages/AddCategory';
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,6 +30,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <Switch>
+        <Route path="/nueva-categoria" component={AddCategory} />
         <Route path="/gestion-platillos" component={GestionPlatillos} />
         <Route path="/test" component={Test}></Route>
         <Route path="/admin" component={Admin}></Route>

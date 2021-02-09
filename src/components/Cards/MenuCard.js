@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { arrayDishes } from '../../components/Arrays/Arrays';
 import { color, fontSize, fontFamily } from '../../theme/theme';
 import { Link } from 'react-router-dom';
+import { db } from '../../firebase/initBD';
 
 const MenuCard = () => {
+
+    const [platillo, setPlatillo] = useState([]);
+
+    useEffect(() => {
+        const getPlatillos = db.collection('prueba')
+            .onSnapshot(function (querySnapshot) {
+                const list = [];
+                querySnapshot.forEach(function (doc) {
+                    list.push({ ...doc.data(), id: doc.id });
+                })
+                setPlatillo(list);
+            })
+    }, [])
+
     return (
         <Wrapper>
-            {arrayDishes.map((item, index) => (
+            {platillo.map((item, index) => (
                 <Card key={index}>
-                    <Img src={item.img} />
+                    <Img src={item.imageURL} />
                     <NameDescr>
                         <p>{item.name}</p>
                         <p>${item.price}.00</p>

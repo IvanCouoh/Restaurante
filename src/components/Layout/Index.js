@@ -4,6 +4,7 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { IoFastFoodSharp } from "react-icons/io5";
 import { AiFillSetting } from "react-icons/ai";
+import { MdPlaylistAdd } from "react-icons/md";
 import { IoExit } from "react-icons/io5";
 import { color, fontSize } from '../../theme/theme';
 
@@ -40,6 +41,15 @@ const Index = ({ children }) => {
                         </span>
                         <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
                             <Buttons to="/nuevo-platillo" style={{ color: '#fff' }}>Alta de platillo</Buttons>
+                        </span>
+                    </Link>
+
+                    <Link to="/nueva-categoria" className={clickIcon ? "btn-container" : "btn-container-none"} title="Nueva categoría">
+                        <span className={clickIcon ? "wrapper-icon" : "wrapper-icon-none"}>
+                            <MdPlaylistAdd />
+                        </span>
+                        <span className={clickIcon ? "wrapper-link" : "wrapper-link-none"}>
+                            <Buttons to="/nueva-categoria" style={{ color: '#fff' }}>Nueva categoría</Buttons>
                         </span>
                     </Link>
 
@@ -92,6 +102,7 @@ const Wrapper = styled.div`
         height: 50px;
         right: 0;
         padding: 15px;
+        z-index: 1000;
 
     }
         .hide-Header{
