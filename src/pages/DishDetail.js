@@ -13,6 +13,17 @@ const DishDetail = () => {
     const { name } = useParams();
 
     const [detalle, setDetalle] = useState([]);
+    const [cantidad, setCantidad] = useState(0)
+
+    const more = () => {
+        setCantidad(cantidad + 1)
+        console.log('cantidad: ', cantidad + 1);
+    }
+
+    const less = () => {
+        setCantidad(cantidad - 1)
+        console.log('cantidad: ', cantidad - 1);
+    }
 
     useEffect(() => {
         const getPlatillos = db.collection('prueba')
@@ -38,13 +49,30 @@ const DishDetail = () => {
                         </Name>
                     </Wrapper>
                     <ContainerDetail>
-                        {/* <p>ID:{match.params.id}</p> */}
                         <p>{detail.description}</p>
-                        
                         <p>${detail.price}.00</p>
                         <hr />
                         <AlightItems>
-                            <p>Cantidad: <span><BtnMasMenos text="-" /><p>10</p><BtnMasMenos text="+" /></span></p>
+                            <p>
+                                Cantidad:
+                                <span>
+                                    <BtnMasMenos
+                                        className={cantidad === 0 ? 'disabled' : ''}
+                                        disabled={cantidad === 0 ? 'disabled' : ''}
+                                        onClick={() => less()}
+                                        text="-"
+                                    />
+                                    <p>
+                                        {cantidad}
+                                    </p>
+                                    <BtnMasMenos
+                                        className={cantidad === 10 ? 'disabled' : ''}
+                                        disabled={cantidad === 10 ? 'disabled' : ''}
+                                        onClick={() => more()}
+                                        text="+"
+                                    />
+                                </span>
+                            </p>
                         </AlightItems>
                         <AlightItems>
                             <p>Total del platillo: <span>$240.00 </span></p>

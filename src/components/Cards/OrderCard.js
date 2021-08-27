@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Img1 from '../../assets/images/img2-galery.jpg';
 import BtnMasMenos from '../../components/Buttons/MoreLessButtons';
@@ -7,6 +7,19 @@ import { color, fontSize } from '../../theme/theme';
 import { arrayListOrder } from "../../components/Arrays/Arrays";
 
 const OrderCard = () => {
+
+    const [cantidad, setCantidad] = useState(0);
+
+    const more = () => {
+        setCantidad(cantidad + 1);
+        console.log(cantidad + 1);
+    }
+
+    const less = () => {
+        setCantidad(cantidad - 1);
+        console.log(cantidad - 1);
+    }
+
     return (
         <>
             {
@@ -19,7 +32,25 @@ const OrderCard = () => {
                                 <OrderData>
                                     <Quantity>
                                         <p>Cantidad</p>
-                                        <p><span><BtnMasMenos text="-" /><p>{item.cantidad}</p><BtnMasMenos text="+" /></span></p>
+                                        <p>
+                                            <span>
+                                                <BtnMasMenos
+                                                    className={cantidad === 0 ? 'disabled' : ''}
+                                                    disabled={cantidad === 0 ? 'disabled' : ''}
+                                                    onClick={() => less()}
+                                                    text="-"
+                                                />
+                                                <p>
+                                                    {cantidad}
+                                                </p>
+                                                <BtnMasMenos
+                                                    className={cantidad === 10 ? 'disabled' : ''}
+                                                    disabled={cantidad === 10 ? 'disabled' : ''}
+                                                    onClick={() => more()}
+                                                    text="+"
+                                                />
+                                            </span>
+                                        </p>
                                     </Quantity>
                                     <p>${item.price}.00</p>
                                 </OrderData>

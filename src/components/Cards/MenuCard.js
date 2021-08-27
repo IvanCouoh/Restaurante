@@ -10,7 +10,7 @@ const MenuCard = () => {
     const [platillo, setPlatillo] = useState([]);
 
     useEffect(() => {
-        const getPlatillos = db.collection('prueba')
+        db.collection('prueba')
             .onSnapshot(function (querySnapshot) {
                 const list = [];
                 querySnapshot.forEach(function (doc) {

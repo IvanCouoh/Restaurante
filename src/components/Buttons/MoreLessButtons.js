@@ -2,10 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { color, fontSize } from '../../theme/theme';
 
-const MoreLessButtons = ({ text }) => {
+const MoreLessButtons = ({ text, onClick, disabled, className }) => {
     return (
         <Wrapper>
-            <MenosMasbtn>{text}</MenosMasbtn>
+            <MenosMasbtn onClick={onClick} disabled={disabled} className={className}>{text}</MenosMasbtn>
         </Wrapper>
     );
 };
@@ -16,6 +16,9 @@ const Wrapper = styled.div`
         justify-content: space-between;
     }
 
+    .disabled{
+        opacity: 0.6;
+    }
 `;
 
 const MenosMasbtn = styled.button`
@@ -27,6 +30,8 @@ const MenosMasbtn = styled.button`
     padding: 0 10px;
     margin: 0;
     outline: none;
+
+    
 `;
 
 
