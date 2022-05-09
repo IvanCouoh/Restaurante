@@ -8,6 +8,7 @@ Home del sitio donde se visualizan una presentación de platillos favoritos y pr
 ![](docs/home.png)
 
 En esta sección se muestra el menú y las categorías.
+
 ![](docs/menu.png)
 
 Aquí se pueden ver los detalles de cada platillo y la opción de añadir a lista de orden.
@@ -15,6 +16,7 @@ Aquí se pueden ver los detalles de cada platillo y la opción de añadir a list
 ![](docs/detalles.png)
 
 En este apartado se ve el detalle de la orden con los totales a pagar.
+
 ![](docs/carrito.png)
 
 * ## Panel administrativo
